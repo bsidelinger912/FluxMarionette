@@ -1,0 +1,24 @@
+{
+  "name": "FluxFramework",
+  "version": "0.0.0",
+  "description": "Our Marionette based flux framework",
+  "main": "flux.js",
+  "authors": [
+    "Ben Sidelinger"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "Javascript/vendor",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "marionette": "~2.4.2",
+    "requirejs": "~2.1.19",
+    "backbone.radio": "~1.0.0",
+    "backbone.advice": "~1.0.2"
+  }
+}
