@@ -27,13 +27,42 @@ define(function(require) {
 	//a store class
 	var Store = FluxMarionette.Store.extend({
 		initialize: function(){
-			this.ajax("testData/name.js", "GET");
+			var self = this;
+
+			//demo a wait for with both a generic event and an api call
+			this.waitFor([
+				{
+					url: "testData/name.json", 
+					type: "GET",
+					method: 'testDataIn'
+				},
+				"testEvent"
+			]).done(function(){
+				self.twoDepsIn();
+			});
+			/*
+			this.ajax({
+				url: "testData/name.json", 
+				type: "GET",
+				method: 'testDataIn'
+			});
+			*/
+		},
+
+		twoDepsIn: function(){
+			console.log('two deps in');
+			console.log(this.toJSON());
+		},
+
+		testDataIn: function(data){
+			console.log('testDataIn');
+			this.set({ testajaxData: data });
+			console.log(this.toJSON());
 		},
 
 		dispatcherEvents: {
 			'testEvent': function(data){
-				//console.log('heard test event');
-				//console.log(data);
+				this.set({ testEventData: data });
 			}
 		}
 	});
@@ -50,7 +79,7 @@ define(function(require) {
 	//a demo itemview
 	var ItemView = FluxMarionette.ItemView.extend({
 		initialize: function(){
-			this.dispatch('testEvent', { test: "test"});
+			this.dispatch('testEvent', { testEventData: "test"});
 		}
 	});
 	var testView = new ItemView();

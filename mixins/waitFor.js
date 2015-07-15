@@ -2,9 +2,10 @@ define(function (require) {
     "use strict";
 
     var dispatcher = require('mixins/dispatcher');
+    var api = require('mixins/api');
 
     return function () {
-        this.mixin([dispatcher]);
+        this.mixin([dispatcher, api]);
 
         this.setDefaults({
             waitFor: function(actions) {
@@ -18,32 +19,31 @@ define(function (require) {
                 }
 
                 if (!$.isArray(actions)) {
-                    throw new Error('In ' + this.name + ', waitFor() needs to be an array of actions (or a single action)');
+                    throw new Error('WaitFor(actions) needs  an array of actions (or a single action)');
                 }
 
-                this.dispatch('LOADING', this.name);
+                this.dispatch('waitFor:loading');
 
                 _.each(actions, function(obj) {
-
-                    // Accept an array full of actions as a string, or objects
-                    if (typeof obj === 'string') {
-                        obj = { action: obj, payload: null, cache: null } ;
-                    }
-
+                    //create a promise
                     var promise = $.Deferred();
                     promises.push(promise);
 
-                    // Listen for ACTION_RECEIVED events - this is purely
-                    // convention that comes out of the dispatch() method. Any
-                    // REQUESTED event will return a RECEIVED event upon
-                    // completion of the ajax call
-                    dispatcher.once(obj.action.replace('_REQUESTED', '_RECEIVED'), function(payload) {
-                        promise.resolve(payload);
-                    });
+                    // a string will just listen for an event, an array will make an ajax request
+                    if (typeof obj === 'string') {
+                        //just an event
+                        this.dispatcher.once(obj, function (payload) {
+                            promise.resolve(payload);
+                        });
+                    } else {
+                        //make and api call ********
+                        var dataId = this.ajax($.extend(obj, { method: function(data){ promise.resolve(data); }}));
 
-                    dispatcher.once(obj.action.replace('_REQUESTED', '_FAILED'), function (payload) {
-                        promise.reject(payload);
-                    });
+                        //or fails
+                        this.dispatcher.once("api:" + dataId + ":failed", function (payload) {
+                            promise.reject(payload);
+                        });
+                    }
 
                     // If it takes longer than 5 seconds and we don't get the
                     // ACTION_RECEIVED event, reject the promise.
@@ -56,8 +56,8 @@ define(function (require) {
                         }
                     }, 5000);
 
-                    self.dispatch(obj.action, obj.payload, obj.cache);
-                });
+                    //??this.dispatch(obj.action, obj.payload, obj.cache);
+                }, this);
 
                 $.when.apply($, promises)
                     .done(function () {
