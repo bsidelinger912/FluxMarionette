@@ -27,7 +27,7 @@ define(function(require) {
 	//a store class
 	var Store = FluxMarionette.Store.extend({
 		initialize: function(){
-			console.log(this.api);
+			this.ajax("testData/name.js", "GET");
 		},
 
 		dispatcherEvents: {
@@ -38,6 +38,14 @@ define(function(require) {
 		}
 	});
 	var testStore = new Store();
+
+	//another test store...
+	var Store2 = FluxMarionette.Store.extend({
+		initialize: function(){
+			console.log('this is a store 2');
+		}
+	});
+	var anotherTestStoreInstance = new Store2();
 
 	//a demo itemview
 	var ItemView = FluxMarionette.ItemView.extend({
