@@ -3,11 +3,14 @@ define(function (require) {
 
     var dispatcher = require('mixins/dispatcher');
 
+    //maybe??? ********
+    FluxMarionette.api = { cache: {}, queue: {}};
+
     //this request method is how we get data from the API
     return function () {
         //mixins
         this.mixin([dispatcher]);
-        console.log('mixing in api');
+      
         this.setDefaults({
             dataId: function(url, action, payload){
                 //we need these two
@@ -29,14 +32,20 @@ define(function (require) {
                 //get the data Id
                 var dataId = this.dataId(url, action, payload);
 
-                //this lets things know we've sent the request out
-                this.dispatch("api:" + dataId + ":requested");
+                //are we already waiting for this same data
+                if(!FluxMarionette.api.queue[dataId]){
+                    //add to queue
+                    FluxMarionette.api.queue[dataId]) = true;
+        
+                    //this lets things know we've sent the request out
+                    this.dispatch("api:" + dataId + ":requested");
 
-                //check the cache
-                if(FluxMarionette.cache.dataId && cache){
-
-                } else {
-                    
+                    //check the cache
+                    if(FluxMarionette.cache.dataId && cache){
+                        
+                    } else {
+                        
+                    }
                 }
 
                 //add to que

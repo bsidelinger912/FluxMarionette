@@ -4,6 +4,10 @@
   "description": "This is for Gulp. SASS compiling, autoreload, etc.",
   "author": "jason@tiller.io",
   "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  },
   "devDependencies": {
     "browser-sync": "^2.7.0",
     "gulp": "^3.8.11",

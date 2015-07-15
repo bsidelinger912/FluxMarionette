@@ -29,6 +29,4 @@ define(function (require) {
 	FluxMarionette.Store = Backbone.Model.extend({}).mixin([storeMixin]);
 	FluxMarionette.ItemView = Marionette.ItemView.extend({}).mixin([viewMixin]);
 
-	//other utils *********************maybe
-	FluxMarionette.cache = {};
 });
