@@ -5,11 +5,7 @@ require.config({
     	"underscore": "vendor/underscore/underscore-min",
     	"backbone": "vendor/backbone/backbone",
         "backbone.radio": "vendor/backbone.radio/build/backbone.radio",
-        "backbone.marionette": "vendor/marionette/lib/backbone.marionette",
-        "backbone.sync.shim": "vendor/orca-lni-utils-backbone-sync-shim/backbone.sync.shim",
-        "backbone.localstorage": "vendor/backbone.localStorage-min",
-        'backbone.advice': "vendor/backbone.advice/advice",
-        'backbone.mixin': "vendor/backbone.advice/mixin"
+        "backbone.marionette": "vendor/marionette/lib/backbone.marionette"
     }
 });
 
@@ -20,17 +16,20 @@ define(function(require) {
 	Backbone.Radio.tuneIn('dispatcher');
 
 	//an app class
-	var App = FluxMarionette.Application.extend({});
+	var App = FluxMarionette.Application.extend({
+		initialize: function(){
+			//console.log('application inited');
+		}
+	});
 	var thisApp = new App();
 
-
 	//a store class
-	var Store = FluxMarionette.Store.extend({
+	var aStore = FluxMarionette.Store.extend({
 		initialize: function(){
 			//console.log('application mixin');
 
 			//this.testMethod();
-			/*var self = this;
+			var self = this;
 
 			//demo a wait for with both a generic event and an api call
 			this.waitFor([
@@ -43,13 +42,15 @@ define(function(require) {
 			]).done(function(){
 				self.twoDepsIn();
 			});
+
 			/*
-			this.ajax({
+			var dataId = this.ajax({
 				url: "testData/name.json", 
 				type: "GET",
 				method: 'testDataIn'
 			});
-			*/
+
+			console.log(dataId);*/
 		},
 
 		twoDepsIn: function(){
@@ -58,19 +59,19 @@ define(function(require) {
 		},
 
 		testDataIn: function(data){
-			console.log('testDataIn');
+			console.log('test ajax data in');
 			this.set({ testajaxData: data });
-			console.log(this.toJSON());
 		},
 
 		dispatcherEvents: {
-			'testEvent': function(data){
-				console.log('test event in');
-				this.set({ testEventData: data });
-			}
+			'testEvent': 'setTestEventData'
+		}, 
+
+		setTestEventData: function(data){
+			this.set({ testEventData: data });
 		}
 	});
-	var testStore = new Store();
+	var testStore = new aStore();
 
 	//var storeMixin = require('mixins/store');
 	//var model = Backbone.Model.extend({}).mixin([storeMixin]);
