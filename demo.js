@@ -24,7 +24,7 @@ define(function(require) {
 	var thisApp = new App();
 
 	//a store class
-	var aStore = FluxMarionette.Store.extend({
+	var aStore = FluxMarionette.ModelStore.extend({
 		initialize: function(){
 			//console.log('application mixin');
 
@@ -68,6 +68,7 @@ define(function(require) {
 		}, 
 
 		setTestEventData: function(data){
+			console.log('heard test event via dispatcherEvents');
 			this.set({ testEventData: data });
 		}
 	});

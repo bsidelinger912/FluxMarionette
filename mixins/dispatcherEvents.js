@@ -1,11 +1,8 @@
-define(function (require) {
-	//mixins
-	var dispatcher = require('mixins/dispatcher');
-	var api = require('mixins/api');
-	var waitFor = require('mixins/waitFor');
+define(function(require){
 
-	FluxMarionette.Store = function(options) {
-		//listen to dispatcher events
+	//this is our way of setting up listeners for dispatcher events, modeled after marionette's model events obj
+	return function(){
+		//loop through  dispatcher events
 		if(this.dispatcherEvents){
 			_.each(this.dispatcherEvents, function(method, action) {
 	            if (typeof this[method] !== "function" && typeof method !== "function") {
@@ -18,12 +15,5 @@ define(function (require) {
 
 	        }, this);
 		}
-
-	    Backbone.Model.call(this, options);
-	};
-
-	_.extend(FluxMarionette.Store.prototype, Backbone.Model.prototype, dispatcher, api, waitFor);
-
-	FluxMarionette.Store.extend = Backbone.Model.extend;
-
+	}
 });
