@@ -8,12 +8,14 @@ define(function (require) {
     return function () {
         this.mixin([dispatcher, api, waitFor]);
 
-        this.setDefaults({
+        /*this.setDefaults({
         	
-        });
+        });*/
 
         this.before('initialize', function () {
         	//grab the dispatcher events
+            console.log('before init');
+            /*
             _.each(this.dispatcherEvents, function(method, action) {
             	
                 if (typeof self[method] !== "function" && typeof method !== "function") {
@@ -21,10 +23,10 @@ define(function (require) {
                 }
 
                 var func = (typeof method === "function") ? method : self[method];
-                
+                console.log(func);
                 this.listenTo(this.dispatcher, action, func);
 
-            }, this);
+            }, this);*/
         });
 
     };

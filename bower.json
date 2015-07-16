@@ -19,6 +19,7 @@
     "marionette": "~2.4.2",
     "requirejs": "~2.1.19",
     "backbone.radio": "~1.0.0",
-    "backbone.advice": "~1.0.2"
+    "backbone.advice": "~1.0.2",
+    "cocktail": "~0.5.10"
   }
 }

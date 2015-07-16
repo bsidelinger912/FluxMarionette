@@ -12,7 +12,7 @@ define(function (require) {
         });
 
         this.before('initialize', function () {
-        	
+        	console.log('view before init');
         });
 
     };

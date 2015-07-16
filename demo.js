@@ -3,7 +3,7 @@ require.config({
     paths: {
     	"jquery": "vendor/jquery/dist/jquery.min",
     	"underscore": "vendor/underscore/underscore-min",
-    	"backbone": "vendor/backbone/backbone-min",
+    	"backbone": "vendor/backbone/backbone",
         "backbone.radio": "vendor/backbone.radio/build/backbone.radio",
         "backbone.marionette": "vendor/marionette/lib/backbone.marionette",
         "backbone.sync.shim": "vendor/orca-lni-utils-backbone-sync-shim/backbone.sync.shim",
@@ -27,7 +27,10 @@ define(function(require) {
 	//a store class
 	var Store = FluxMarionette.Store.extend({
 		initialize: function(){
-			var self = this;
+			//console.log('application mixin');
+
+			//this.testMethod();
+			/*var self = this;
 
 			//demo a wait for with both a generic event and an api call
 			this.waitFor([
@@ -62,19 +65,25 @@ define(function(require) {
 
 		dispatcherEvents: {
 			'testEvent': function(data){
+				console.log('test event in');
 				this.set({ testEventData: data });
 			}
 		}
 	});
 	var testStore = new Store();
 
+	//var storeMixin = require('mixins/store');
+	//var model = Backbone.Model.extend({}).mixin([storeMixin]);
+	//var thisModel = new model();
+
+
 	//another test store...
-	var Store2 = FluxMarionette.Store.extend({
+	/*var Store2 = FluxMarionette.Store.extend({
 		initialize: function(){
-			console.log('this is a store 2');
+			//console.log('this is a store 2');
 		}
 	});
-	var anotherTestStoreInstance = new Store2();
+	var anotherTestStoreInstance = new Store2();*/
 
 	//a demo itemview
 	var ItemView = FluxMarionette.ItemView.extend({

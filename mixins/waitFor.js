@@ -9,6 +9,7 @@ define(function (require) {
 
         this.setDefaults({
             waitFor: function(actions) {
+                
                 var self = this;
                 var promise = $.Deferred();
                 var promises = [];
@@ -37,7 +38,10 @@ define(function (require) {
                         });
                     } else {
                         //make and api call ********
-                        var dataId = this.ajax($.extend(obj, { method: function(data){ promise.resolve(data); }}));
+                        var dataId = this.ajax($.extend(obj, { method: function(data){ 
+                            console.log('ajax resolved');
+                            promise.resolve(data); 
+                        }}));
 
                         //or fails
                         this.dispatcher.once("api:" + dataId + ":failed", function (payload) {
