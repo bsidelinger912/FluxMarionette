@@ -1,6 +1,6 @@
 {
-  "name": "FluxMarionette",
-  "version": "0.0.2",
+  "name": "flux.marionette",
+  "version": "0.0.3",
   "main": "dist/flux.marionette.min.js",
   "authors": [
     "Ben Sidelinger"
