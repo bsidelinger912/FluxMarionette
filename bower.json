@@ -16,7 +16,7 @@
     ".bowerrc",
     "gulpFile",
     "LICENSE",
-    "index.html"
+    "index.html",
     "demo.js",
     "server.js"
   ],
