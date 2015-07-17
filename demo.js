@@ -34,7 +34,7 @@ define(function(require) {
 			//demo a wait for with both a generic event and an api call
 			this.waitFor([
 				{
-					url: "testData/name.json", 
+					url: "testData/name.js", 
 					type: "GET",
 					method: 'testDataIn'
 				},
