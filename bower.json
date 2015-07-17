@@ -1,27 +1,24 @@
 {
-  "name": "FluxMarionette",
-  "version": "0.0.1",
-  "main": "dist/flux.marionette.min.js",
-  "authors": [
-    "Ben Sidelinger"
-  ],
-  "ignore": [
-    "node_modules",
-    "vendor",
-    "demoData",
-    "src",
-    "tools",
-    "package.json",
-    "bower.json",
-    ".bowerrc",
-    "gulpFile",
-    "LICENSE",
-    "index.html"
-    "demo.js",
-    "server.js"
-  ],
-  "dependencies": {
-    "marionette": "~2.4.2",
-    "backbone.radio": "~1.0.0"
-  }
+    "name": "FluxMarionette",
+    "version": "0.0.1",
+    "main": "dist/flux.marionette.min.js",
+    "ignore": [
+        "src",
+        "vendor",
+        "node_modules",
+        "tools",
+        ".bowerrc",
+        ".gitignore",
+        "bower.json",
+        "gulpFile.js",
+        "package.json",
+        "README.md"
+    ],
+    "dependencies": {
+        "jquery": ">=1.10.2",
+        "underscore": "~1.5.2"
+    },
+    "devDependencies": {
+        "jquery-mockjax": "~1.5.2"
+    }
 }
