@@ -8,5 +8,4 @@ define(function (require) {
 	};
 	_.extend(FluxMarionette.Application.prototype, Marionette.Application.prototype, dispatcher);
 	FluxMarionette.Application.extend = Marionette.Application.extend;
-
 });
