@@ -10,7 +10,7 @@ require.config({
 });
 
 define(function(require) {
-	require('flux.min');
+	require('flux');
 
 	console.log(FluxMarionette);
 

@@ -13,16 +13,16 @@ define(function (require) {
   /* istanbul ignore next */
   if (typeof define === 'function' && define.amd) {
     define(['backbone.marionette'], function(Marionette) {
-      return (root.FluxMarionette = root.Mn = factory(root, Marionette));
+      return (root.FluxMarionette = factory(root, Marionette));
     });
   } else if (typeof exports !== 'undefined') {
     var Marionette = require('backbone.marionette');
     module.exports = factory(root, Marionette);
   } else {
-    root.FluxMarionette = factory(root, root.Backbone, root._);
+    root.FluxMarionette = factory(root, root.Marionette);
   }
 
-}(this, function(root, Backbone, _) {
+}(this, function(root, Marionette) {
 	var FluxMarionette = {};
 
 	//load our flux classes
@@ -30,7 +30,12 @@ define(function (require) {
 	//require('classes/modelStore');
 	//require('classes/views');
 	//require('classes/router');
-	FluxMarionette.ApiController = require('classes/apiController');
+	require(['classes/apiController'], function (apiController) {
+	    FluxMarionette.ApiController = apiController;
+	});
+
+	//var apiController = require('classes/apiController');
+	
 
 	return FluxMarionette;
-})
+}));
