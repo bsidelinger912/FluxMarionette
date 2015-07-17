@@ -1,12 +1,10 @@
 {
   "name": "FluxMarionette",
   "version": "0.0.1",
-  "description": "A Marionette based flux framework",
   "main": "dist/flux.marionette.min.js",
   "authors": [
     "Ben Sidelinger"
   ],
-  "license": "MIT",
   "ignore": [
     "node_modules",
     "vendor",
