@@ -26,7 +26,6 @@ define(function (require) {
     return {
         //the main broadcast channels
         dispatcher: Radio.channel('dispatcher'),
-        requests: Radio.channel('requests'),
 
         //should type be a private function?????
         type: function() {

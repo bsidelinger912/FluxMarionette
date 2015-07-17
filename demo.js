@@ -13,18 +13,37 @@ define(function(require) {
 	require('flux');
 
 	//listener
-	Backbone.Radio.tuneIn('dispatcher');
+	//Backbone.Radio.tuneIn('dispatcher');
+
+	var apiController = FluxMarionette.ApiController.extend({
+		name: {
+			url: "testData/name.js", 
+			type: "GET",
+			apiMethod: "ajax"
+		},
+
+		addresses: {
+			url: "testData/addresses.js",
+			type: "GET",
+			apiMethod: "ajax"
+		}
+	});
+
+	var thisApiController = new apiController();//this should be a singleton
 
 	//an app class
 	var App = FluxMarionette.Application.extend({
 		initialize: function(){
-			//console.log('application inited');
+			//
 		}
 	});
-	var thisApp = new App();
+	var app = new App();
 
+	
 	//a store class
 	var aStore = FluxMarionette.ModelStore.extend({
+		//debug: true,
+
 		initialize: function(){
 			//console.log('application mixin');
 
@@ -36,11 +55,12 @@ define(function(require) {
 				{
 					url: "testData/name.js", 
 					type: "GET",
-					method: 'testDataIn'
+					method: 'setName'//change to callbackMethod, and add an api method ie "ajax" or "websockets"
 				},
+				thisApiController.getEndpoint("addresses", this.setAddresses),
 				"testEvent"
 			]).done(function(){
-				self.twoDepsIn();
+				self.depsIn();
 			});
 
 			/*
@@ -53,14 +73,17 @@ define(function(require) {
 			console.log(dataId);*/
 		},
 
-		twoDepsIn: function(){
-			console.log('two deps in');
+		depsIn: function(){
+			console.log('deps in');
 			console.log(this.toJSON());
 		},
 
-		testDataIn: function(data){
-			console.log('test ajax data in');
-			this.set({ testajaxData: data });
+		setAddresses: function(data){
+			this.set({ addresses: data });
+		},
+
+		setName: function(data){
+			this.set({ name: data });
 		},
 
 		dispatcherEvents: {
@@ -68,24 +91,12 @@ define(function(require) {
 		}, 
 
 		setTestEventData: function(data){
-			console.log('heard test event via dispatcherEvents');
 			this.set({ testEventData: data });
 		}
 	});
 	var testStore = new aStore();
 
-	//var storeMixin = require('mixins/store');
-	//var model = Backbone.Model.extend({}).mixin([storeMixin]);
-	//var thisModel = new model();
 
-
-	//another test store...
-	/*var Store2 = FluxMarionette.Store.extend({
-		initialize: function(){
-			//console.log('this is a store 2');
-		}
-	});
-	var anotherTestStoreInstance = new Store2();*/
 
 	//a demo itemview
 	var ItemView = FluxMarionette.ItemView.extend({
