@@ -11,7 +11,7 @@ require.config({
 });
 
 define(function(require) {
-	var FluxMarionette = require('../dist/flux.marionette.min');
+	var FluxMarionette = require('../flux.marionette.min');
 
 	console.log(FluxMarionette);
 

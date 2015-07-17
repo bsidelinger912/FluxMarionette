@@ -19,10 +19,10 @@ define(function (require) {
 			if(typeof callback === "function"){
 				//just passing a function in
 				endpoint.method = callback;
-			} else if(typeof callback === "object" && calback.event){
+			} else if(typeof callback === "string"){
 				//for passing event names for the callback
 				endpoint.method = function(data){
-					self.dispatch(callback.event, data);
+					self.dispatch(callback, data);
 				};
 			} 
 			
