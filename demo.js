@@ -1,31 +1,33 @@
 require.config({
     urlArgs: "v=" + (new Date()).getTime(),
+    baseUrl: "src",
     paths: {
-    	"jquery": "vendor/jquery/dist/jquery.min",
-    	"underscore": "vendor/underscore/underscore-min",
-    	"backbone": "vendor/backbone/backbone",
-        "backbone.radio": "vendor/backbone.radio/build/backbone.radio",
-        "backbone.marionette": "vendor/marionette/lib/backbone.marionette"
+    	"jquery": "../vendor/jquery/dist/jquery.min",
+    	"underscore": "../vendor/underscore/underscore-min",
+    	"backbone": "../vendor/backbone/backbone",
+        "backbone.radio": "../vendor/backbone.radio/build/backbone.radio",
+        "backbone.marionette": "../vendor/marionette/lib/backbone.marionette"
     }
 });
 
 define(function(require) {
-	require('flux');
+	var FluxMarionette = require('../dist/flux.marionette.min');
 
 	console.log(FluxMarionette);
 
+	
 	//listener
 	//Backbone.Radio.tuneIn('dispatcher');
 
 	var apiController = FluxMarionette.ApiController.extend({
 		name: {
-			url: "testData/name.js", 
+			url: "demoData/name.js", 
 			type: "GET",
 			apiMethod: "ajax"
 		},
 
 		addresses: {
-			url: "testData/addresses.js",
+			url: "demoData/addresses.js",
 			type: "GET",
 			apiMethod: "ajax"
 		}
@@ -55,7 +57,7 @@ define(function(require) {
 			//demo a wait for with both a generic event and an api call
 			this.waitFor([
 				{
-					url: "testData/name.js", 
+					url: "demoData/name.js", 
 					type: "GET",
 					method: 'setName'//change to callbackMethod, and add an api method ie "ajax" or "websockets"
 				},

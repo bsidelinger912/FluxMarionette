@@ -2,22 +2,28 @@
   "name": "FluxMarionette",
   "version": "0.0.1",
   "description": "A Marionette based flux framework",
-  "main": "flux.js",
+  "main": "dist/flux.marionette.min.js",
   "authors": [
     "Ben Sidelinger"
   ],
   "license": "MIT",
   "ignore": [
-    "**/.*",
     "node_modules",
-    "bower_components",
-    "Javascript/vendor",
-    "test",
-    "tests"
+    "vendor",
+    "demoData",
+    "src",
+    "tools",
+    "package.json",
+    "bower.json",
+    ".bowerrc",
+    "gulpFile",
+    "LICENSE",
+    "index.html"
+    "demo.js",
+    "server.js"
   ],
-  "devDependencies": {
+  "dependencies": {
     "marionette": "~2.4.2",
-    "requirejs": "~2.1.19",
     "backbone.radio": "~1.0.0"
   }
 }

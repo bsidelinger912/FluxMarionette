@@ -1,0 +1,18 @@
+//Hello, this is Ben Sidelinger's Flux framework built on Marionette
+
+(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['backbone.marionette', 'backbone.radio'], function(Marionette, Radio) {
+      return (root.FluxMarionette = factory(root, Marionette, Radio));
+    });
+  } else if (typeof exports !== 'undefined') {
+    var Marionette = require('backbone.marionette');
+    var Radio = require('backbone.radio');
+    module.exports = factory(root, Marionette, Radio);
+  } else {
+    root.FluxMarionette = factory(root, root.Marionette, root.Backbone.Radio);
+  }
+
+}(this, function(root, Marionette, Radio) {
+
+

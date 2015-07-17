@@ -4,9 +4,6 @@ define(function (require) {
     //deps
     require('lib/md5');
 
-    //caching and queueing containers
-    FluxMarionette.api = FluxMarionette.api || { cache: {}, queue: {}};
-
     //this request method is how we get data from the API, it needs the dispatcher to be mixed in already
     return {
         dataId: function(url, type, payload){

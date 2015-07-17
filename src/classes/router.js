@@ -1,20 +1,21 @@
 define(function (require) {
 	//mixins
-	//mixins
 	var dispatcher = require('mixins/dispatcher'),
 		api = require('mixins/api'),
 		waitFor = require('mixins/waitFor'),
 		dispatcherEvents = require('mixins/dispatcherEvents');
 
-	FluxMarionette.ModelStore = function(options) {
+	
+	var router = function(options) {
 		//set up listeners for dispatcher events
 		dispatcherEvents.call(this);
 
-	    Backbone.Model.call(this, options);
+	    Backbone.Router.call(this, options);
 	};
 
-	_.extend(FluxMarionette.ModelStore.prototype, Backbone.Model.prototype, dispatcher, api, waitFor);
+	//mixin api dispatcher and wait for
+	_.extend(router.prototype, Backbone.Router.prototype, dispatcher, api, waitFor);
+	router.extend = Backbone.Router.extend;
 
-	FluxMarionette.ModelStore.extend = Backbone.Model.extend;
-
+	return router;
 });
