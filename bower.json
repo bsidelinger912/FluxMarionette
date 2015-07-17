@@ -1,7 +1,7 @@
 {
   "name": "flux.marionette",
-  "version": "0.0.4",
-  "main": "dist/flux.marionette.min.js",
+  "version": "0.0.5",
+  "main": "flux.marionette.min.js",
   "authors": [
     "Ben Sidelinger"
   ],
@@ -14,11 +14,12 @@
     "package.json",
     "bower.json",
     ".bowerrc",
-    "gulpFile",
     "LICENSE",
     "index.html",
     "demo.js",
-    "server.js"
+    "server.js",
+	".gitignore",
+	"gulpFile.js"
   ],
   "dependencies": {
     "marionette": "~2.4.2",

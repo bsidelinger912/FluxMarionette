@@ -8,7 +8,7 @@
     },
     "include": ["../tools/almond", "flux.marionette"],
     //"exclude": ["jquery", "underscore", "backbone.marionette", "backbone.radio"],
-    "out": "../dist/flux.marionette.min.js",
+    "out": "../flux.marionette.min.js",
     "wrap": {
         "startFile": "wrap.start",
         "endFile": "wrap.end"
