@@ -9,8 +9,10 @@
         "tools",
         ".bowerrc",
         ".gitignore",
+        ".jshintignore",
+        ".jshintrc",
         "bower.json",
-        "gulpFile.js",
+        "gruntfile.js",
         "package.json",
         "README.md"
     ],
