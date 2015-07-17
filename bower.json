@@ -1,7 +1,7 @@
 {
-  "name": "FluxFramework",
-  "version": "0.0.0",
-  "description": "Our Marionette based flux framework",
+  "name": "FluxMarionette",
+  "version": "0.0.1",
+  "description": "A Marionette based flux framework",
   "main": "flux.js",
   "authors": [
     "Ben Sidelinger"

@@ -2,11 +2,11 @@ define(function (require) {
 	var dispatcher = require('mixins/dispatcher');
 	var api = require('mixins/api');
 
-	FluxMarionette.ApiController = function(options) {
+	apiController = function(options) {
 	    Marionette.Object.call(this, options);
 	};
 
-	_.extend(FluxMarionette.ApiController.prototype, Marionette.Object.prototype, dispatcher, api, {
+	_.extend(apiController.prototype, Marionette.Object.prototype, dispatcher, api, {
 		//gets the object that we send to the api methods
 		getEndpoint: function(endpointName, callback){
 			//grab the config
@@ -35,5 +35,7 @@ define(function (require) {
 		}
 	});
 
-	FluxMarionette.ApiController.extend = Marionette.Object.extend;
+	apiController.extend = Marionette.Object.extend;
+
+	return apiController;
 });

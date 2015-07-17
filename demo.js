@@ -10,7 +10,9 @@ require.config({
 });
 
 define(function(require) {
-	require('flux');
+	require('flux.min');
+
+	console.log(FluxMarionette);
 
 	//listener
 	//Backbone.Radio.tuneIn('dispatcher');
