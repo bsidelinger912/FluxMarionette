@@ -1,4 +1,27 @@
 {
-    "name": "FluxMarionette",
-    "version": "0.0.1"
+  "name": "FluxMarionette",
+  "version": "0.0.1",
+  "main": "dist/flux.marionette.min.js",
+  "authors": [
+    "Ben Sidelinger"
+  ],
+  "ignore": [
+    "node_modules",
+    "vendor",
+    "demoData",
+    "src",
+    "tools",
+    "package.json",
+    "bower.json",
+    ".bowerrc",
+    "gulpFile",
+    "LICENSE",
+    "index.html"
+    "demo.js",
+    "server.js"
+  ],
+  "dependencies": {
+    "marionette": "~2.4.2",
+    "backbone.radio": "~1.0.0"
+  }
 }
