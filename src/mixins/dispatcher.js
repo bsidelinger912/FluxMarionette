@@ -20,11 +20,11 @@ define(function (require) {
 
         var message = (dispatcher) ? ' data request in the ' : (response ? ' handled by ' : ' sent from ');
 
-        console.debug((response ? ' ↪ ' : '') + ' %c' + action + '%c' + message + name + '%c ' + type, css1, css2, css3, payload);
+        console.log((response ? ' ↪ ' : '') + ' %c' + action + '%c' + message + name + '%c ' + type, css1, css2, css3, payload);
     }
     
     return {
-        //the main broadcast channels
+        //the main broadcast channel
         dispatcher: Radio.channel('dispatcher'),
 
         //should type be a private function?????
