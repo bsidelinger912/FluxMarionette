@@ -49,7 +49,15 @@ define(function (require) {
                 if(FluxMarionette.api.cache[dataId] && useCache){
                     promise = $.Deferred().resolve(FluxMarionette.api.cache[dataId]);
                 } else {
-                    promise = $.ajax({
+                    /*var data = (options.payload) ? JSON.stringify(options.payload) : "",
+                        defaults = {
+                            contentType: 'application/json charset=utf-8',
+                            dataType: 'json',
+                            data: data
+                        };
+                    promise = $.ajax($.extend(defaults, options));*/
+
+                     promise = $.ajax({
                         type: options.type,
                         url: options.url,
                         data: (options.payload) ? JSON.stringify(options.payload) : "",
@@ -57,7 +65,7 @@ define(function (require) {
                         dataType: 'json'
                     });
                 }
-
+                console.log(promise);
                 promise.done(function (data) {
                     //dispatch the message, this dispatch is identified by the request params
                     self.dispatch("api:" + dataId + ":received", data);

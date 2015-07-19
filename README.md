@@ -81,7 +81,7 @@ this.waitFor([
 	{
 		url: "demoData/name.js", 
 		type: "GET",
-		method: 'setName'//change to callbackMethod, and add an api method ie "ajax" or "websockets"
+		method: 'setName'
 	},
 	thisApiController.getEndpoint("addresses", this.setAddresses),
 	"testEvent"

@@ -63,7 +63,7 @@ define(function(require) {
 				},
 				thisApiController.getEndpoint("addresses", this.setAddresses),
 				"testEvent"
-			]).done(function(){
+			]).done(function(dataArray){
 				self.depsIn();
 			});
 
