@@ -16,9 +16,9 @@ define(function (require) {
             return md5(url + type + JSON.stringify(payload));
         },
 
-        ajax: function(options){ //url, type, payload, useCache, method) {
+        ajax: function(options){ //url, type, payload, useCache, method, eventName) {
             //error handling
-            if(!options.url || !options.type) throw new Error('must pass url and action to the api functions');
+            if(!options.url || !options.type) throw new Error('must pass url and type to the api functions');
 
             //cache by default
             var useCache = (typeof options.useCache === "undefined") ? true : options.useCache;
@@ -49,26 +49,26 @@ define(function (require) {
                 if(FluxMarionette.api.cache[dataId] && useCache){
                     promise = $.Deferred().resolve(FluxMarionette.api.cache[dataId]);
                 } else {
-                    /*var data = (options.payload) ? JSON.stringify(options.payload) : "",
-                        defaults = {
-                            contentType: 'application/json charset=utf-8',
+                    //prep the ajax options
+                     var defaults = {
+                            contentType: 'application/json; charset=utf-8',
                             dataType: 'json',
-                            data: data
-                        };
-                    promise = $.ajax($.extend(defaults, options));*/
+                            data: (options.payload) ? JSON.stringify(options.payload) : ""
+                        }, 
+                        ajaxOptions = $.extend(defaults, options);
+                        delete ajaxOptions.method;
+                        delete ajaxOptions.payload;
 
-                     promise = $.ajax({
-                        type: options.type,
-                        url: options.url,
-                        data: (options.payload) ? JSON.stringify(options.payload) : "",
-                        contentType: 'application/json charset=utf-8',
-                        dataType: 'json'
-                    });
+                     //now we've got the options so set the promise   
+                     promise = $.ajax(ajaxOptions);
                 }
-                console.log(promise);
+                
                 promise.done(function (data) {
                     //dispatch the message, this dispatch is identified by the request params
                     self.dispatch("api:" + dataId + ":received", data);
+
+                    //for a generic event name to broadcast
+                    if(options.eventName) self.dispatch(options.eventName, data);
                     
                     //cache the data
                     if (useCache) {

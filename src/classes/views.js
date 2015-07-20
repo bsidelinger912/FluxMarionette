@@ -1,4 +1,6 @@
 define(function (require) {
+	var Marionette = require('backbone.marionette');
+	
 	//things to add to all views
 	var dispatcher = require('mixins/dispatcher');
 

@@ -43,7 +43,6 @@ define(function (require) {
                     //make and api call ********
                     var dataId = this.ajax($.extend(obj, { method: function(data){ 
                         //call the original method and resolve the promise
-                        console.log(data);
                         callback && callback.call(self, data);
                         promise.resolve(data); 
                     }}));

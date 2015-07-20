@@ -10,7 +10,7 @@ define(function(require){
 	            }
 
 	            var func = (typeof method === "function") ? method : this[method];
-	            
+	          
 	            this.listenTo(this.dispatcher, action, func);
 
 	        }, this);

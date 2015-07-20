@@ -1,10 +1,12 @@
+var FluxMarionette = {};
+
 define(function (require) {
     'use strict';
 
     require('backbone.marionette')
 
     //our main container
-    var FluxMarionette = {};
+    
 
     //caching and queueing containers used by the api mixin
     FluxMarionette.api = { cache: {}, queue: {}};

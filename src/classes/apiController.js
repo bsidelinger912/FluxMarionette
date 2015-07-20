@@ -1,4 +1,7 @@
 define(function (require) {
+	var Marionette = require('backbone.marionette');
+
+	//mixins
 	var dispatcher = require('mixins/dispatcher');
 	var api = require('mixins/api');
 
@@ -8,7 +11,7 @@ define(function (require) {
 
 	_.extend(apiController.prototype, Marionette.Object.prototype, dispatcher, api, {
 		//gets the object that we send to the api methods
-		getEndpoint: function(endpointName, callback){
+		getEndpoint: function(endpointName, payload, callback){
 			//grab the config
 			var self = this,
 				endpoint = this[endpointName];
@@ -25,13 +28,15 @@ define(function (require) {
 					self.dispatch(callback, data);
 				};
 			} 
+
+			if(payload) endpoint.payload = payload;
 			
 			return endpoint;
 		},
 
 		//calls the api methods with the endpoint logic
-		callEndpoint: function(endpointName, callback){
-			this.ajax(this.getEndpoint(endpointName, callback));
+		callEndpoint: function(endpointName, payload, callback){
+			return this.ajax(this.getEndpoint(endpointName, payload, callback));
 		}
 	});
 

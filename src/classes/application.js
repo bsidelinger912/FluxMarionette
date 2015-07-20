@@ -1,4 +1,6 @@
 define(function (require) {
+	var Marionette = require('backbone.marionette');
+	
 	//mixins here
 	var dispatcher = require('mixins/dispatcher');
 
