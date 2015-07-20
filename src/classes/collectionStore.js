@@ -10,12 +10,12 @@ define(function (require) {
 		//set up listeners for dispatcher events
 		dispatcherEvents.call(this);
 
-	    Backbone.Model.call(this, options);
+	    Backbone.Collection.call(this, options);
 	};
 
-	_.extend(collectionStore.prototype, Backbone.Model.prototype, dispatcher, api, waitFor);
+	_.extend(collectionStore.prototype, Backbone.Collection.prototype, dispatcher, api, waitFor);
 
-	collectionStore.extend = Backbone.Model.extend;
+	collectionStore.extend = Backbone.Collection.extend;
 
 	return collectionStore;
 });
