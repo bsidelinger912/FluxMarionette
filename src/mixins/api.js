@@ -64,25 +64,27 @@ define(function (require) {
                 }
                 
                 promise.done(function (data) {
+                    //cache the data
+                    if (useCache) {
+                        FluxMarionette.api.cache[dataId] = data;
+                    }
+
+                    //remove this call from the sync cue
+                    delete FluxMarionette.api.queue[dataId];
+
                     //dispatch the message, this dispatch is identified by the request params
                     self.dispatch("api:" + dataId + ":received", data);
 
                     //for a generic event name to broadcast
                     if(options.eventName) self.dispatch(options.eventName, data);
-                    
-                    //cache the data
-                    if (useCache) {
-                        FluxMarionette.api.cache[dataId] = data;
-                    }
                 }).fail(function (xhr, error) {
+                    //remove this call from the sync cue
+                    delete FluxMarionette.api.queue[dataId];
+
                     //error events, both specific and general
                     self.dispatch("api:" + dataId + ":failed", error);
                     self.dispatch("api:genericError", error);
 
-                })
-                .always(function(xhr, error, message){
-                    //remove this call from the sync cue
-                    delete FluxMarionette.api.queue[dataId];
                 });
             }
 
