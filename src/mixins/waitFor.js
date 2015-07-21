@@ -68,8 +68,11 @@ define(function (require) {
 
             $.when.apply($, promises)
                 .done(function () {
-                    promise.resolve(arguments);
-                    self.dispatch('LOADED', self.name);
+                    //defer, so all necessary setting can be done
+                    _.defer(function(){
+                        promise.resolve(arguments);
+                        self.dispatch('LOADED', self.name);
+                    });
                 })
                 .fail(function () {
                     promise.reject(arguments);
