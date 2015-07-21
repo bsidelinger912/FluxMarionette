@@ -69,8 +69,9 @@ define(function (require) {
             $.when.apply($, promises)
                 .done(function () {
                     //defer, so all necessary setting can be done
+                    var args = arguments;
                     setTimeout(function(){
-                        promise.resolve(arguments);
+                        promise.resolve(args);
                         self.dispatch('LOADED', self.name);
                     }, 0);
                 })

@@ -11,7 +11,7 @@ require.config({
 });
 
 define(function(require) {
-	var FluxMarionette = require('flux.marionette');//../flux.marionette.min');
+	var FluxMarionette = require('../flux.marionette.min');//'flux.marionette');/
 
 	console.log(FluxMarionette);
 
@@ -83,6 +83,7 @@ define(function(require) {
 				thisApiController.getEndpoint('ssrGetProfile'),
 				"testEvent"
 			]).done(function(dataArray){
+				console.log(dataArray);
 				self.depsIn();
 			});
 
