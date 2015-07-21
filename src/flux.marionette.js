@@ -25,9 +25,12 @@ define(function (require) {
     if (typeof console === "undefined") {
         console = {
             log: function () { },
-            error: function () { }
+            error: function () {}
         };
     }
+
+    //add debug support for FF
+    console.debug = console.debug || console.log;
 
     return FluxMarionette;
 });
