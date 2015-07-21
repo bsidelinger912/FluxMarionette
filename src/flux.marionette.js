@@ -5,7 +5,7 @@ define(function (require) {
     'use strict';
 
     //need marionette
-    require('backbone.marionette')
+    require('backbone.marionette');
 
     //caching and queueing containers used by the api mixin
     FluxMarionette.api = { cache: {}, queue: {}};
