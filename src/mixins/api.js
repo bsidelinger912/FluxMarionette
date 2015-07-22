@@ -31,7 +31,7 @@ define(function (require) {
             if(options.method){
                 var func = (typeof options.method === "function") ? options.method : this[options.method];
                 this.dispatcher.once("api:" + dataId + ":received", function (data) {
-                    if(typeof console !== "undefined") console.log('heard once listener in api mixin' - dataId);
+                    if(typeof console !== "undefined") console.log('heard once listener in api mixin' + dataId);
                     //make sure to pass the "this" context
                     func.call(self, data);
                 });
