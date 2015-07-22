@@ -7,6 +7,14 @@ define(function (require) {
     //need marionette
     require('backbone.marionette');
 
+    //we do some logging, so create a safe console
+    if (typeof console === "undefined") {
+        console = {
+            log: function () { },
+            error: function () {}
+        };
+    }
+
     //caching and queueing containers used by the api mixin
     FluxMarionette.api = { cache: {}, queue: {}};
 
@@ -20,14 +28,6 @@ define(function (require) {
 	//we've got all the views in the same class file, this way changes can easily be made to all views
 	var views = require('classes/views');
 	FluxMarionette = $.extend(FluxMarionette, views);
-
-    //we do some logging, so create a safe console
-    if (typeof console === "undefined") {
-        console = {
-            log: function () { },
-            error: function () {}
-        };
-    }
 
     //add debug support for FF
     console.debug = console.debug || console.log;
