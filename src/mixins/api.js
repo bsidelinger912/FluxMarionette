@@ -30,9 +30,9 @@ define(function (require) {
             //set a one time listener for the response if we have a callback methods
             if(options.method){
                 var func = (typeof options.method === "function") ? options.method : this[options.method];
-                if(typeof console !== "undefined") console.log('binding once listener in api mixin: ' + dataId);
+                //if(typeof console !== "undefined") console.log('binding once listener in api mixin: ' + dataId);
                 this.dispatcher.once("api:" + dataId + ":received", function (data) {
-                    if(typeof console !== "undefined") console.log('heard once listener in api mixin: ' + dataId);
+                    //if(typeof console !== "undefined") console.log('heard once listener in api mixin: ' + dataId);
                     //make sure to pass the "this" context
                     func.call(self, data);
                 });
