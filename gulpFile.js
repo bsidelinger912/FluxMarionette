@@ -24,8 +24,7 @@ gulp.task('serve', ['sass'], function() {
         reloadOnRestart: true,
         open: false,
         middleware: [
-            proxyMiddleware('/GatewayProxy', { target: 'http://159.1.15.136' }),
-            proxyMiddleware('/fluxmarionette', { target: 'http://lnidpc003109d' }),
+            proxyMiddleware('', { target: 'http://localhost:3000' }),
         ]
     });
     
