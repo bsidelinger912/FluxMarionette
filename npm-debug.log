@@ -1,0 +1,158 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@2.9.1
+3 info using node@v0.12.3
+4 verbose readDependencies loading dependencies from /Users/benny/FluxMarionette/package.json
+5 warn package.json TillerBoilerplate@0.0.1 No repository field.
+6 verbose install where, deps [ '/Users/benny/FluxMarionette',
+6 verbose install   [ 'body-parser',
+6 verbose install     'express',
+6 verbose install     'browser-sync',
+6 verbose install     'gulp',
+6 verbose install     'gulp-autoprefixer',
+6 verbose install     'gulp-filter',
+6 verbose install     'gulp-mocha',
+6 verbose install     'gulp-mocha-phantomjs',
+6 verbose install     'gulp-notify',
+6 verbose install     'gulp-sass',
+6 verbose install     'gulp-sourcemaps',
+6 verbose install     'gulp-watch',
+6 verbose install     'http-proxy-middleware',
+6 verbose install     'mocha-phantomjs',
+6 verbose install     'phantomjs' ] ]
+7 verbose install where, peers [ '/Users/benny/FluxMarionette', [] ]
+8 verbose installManyTop reading for lifecycle /Users/benny/FluxMarionette/package.json
+9 info preinstall TillerBoilerplate@0.0.1
+10 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/body-parser/package.json
+11 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/browser-sync/package.json
+12 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/express/package.json
+13 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp/package.json
+14 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp-autoprefixer/package.json
+15 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp-filter/package.json
+16 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp-mocha/package.json
+17 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp-mocha-phantomjs/package.json
+18 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp-notify/package.json
+19 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp-sass/package.json
+20 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp-sourcemaps/package.json
+21 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/gulp-watch/package.json
+22 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/http-proxy-middleware/package.json
+23 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/mocha-phantomjs/package.json
+24 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/phantomjs/package.json
+25 verbose installManyTop reading scoped package data from /Users/benny/FluxMarionette/node_modules/requirejs/package.json
+26 verbose readDependencies loading dependencies from /Users/benny/FluxMarionette/package.json
+27 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/body-parser/package.json
+28 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/browser-sync/package.json
+29 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/express/package.json
+30 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp/package.json
+31 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp-autoprefixer/package.json
+32 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp-filter/package.json
+33 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp-mocha/package.json
+34 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp-mocha-phantomjs/package.json
+35 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp-notify/package.json
+36 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp-sass/package.json
+37 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp-sourcemaps/package.json
+38 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/gulp-watch/package.json
+39 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/http-proxy-middleware/package.json
+40 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/mocha-phantomjs/package.json
+41 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/phantomjs/package.json
+42 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/requirejs/package.json
+43 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/.bin/browser-sync/package.json
+44 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/.bin/gulp/package.json
+45 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/.bin/mocha-phantomjs/package.json
+46 verbose targetResolver reading package data from /Users/benny/FluxMarionette/node_modules/.bin/r.js/package.json
+47 verbose already installed skipping body-parser@^1.4.3 /Users/benny/FluxMarionette
+48 verbose already installed skipping express@^4.4.5 /Users/benny/FluxMarionette
+49 verbose already installed skipping browser-sync@^2.7.0 /Users/benny/FluxMarionette
+50 verbose already installed skipping gulp@^3.8.11 /Users/benny/FluxMarionette
+51 verbose already installed skipping gulp-autoprefixer@^2.2.0 /Users/benny/FluxMarionette
+52 verbose already installed skipping gulp-filter@^2.0.2 /Users/benny/FluxMarionette
+53 verbose already installed skipping gulp-mocha@^2.0.1 /Users/benny/FluxMarionette
+54 verbose already installed skipping gulp-mocha-phantomjs@^0.6.1 /Users/benny/FluxMarionette
+55 verbose already installed skipping gulp-notify@^2.2.0 /Users/benny/FluxMarionette
+56 verbose already installed skipping gulp-sass@^1.3.3 /Users/benny/FluxMarionette
+57 verbose already installed skipping gulp-sourcemaps@^1.5.2 /Users/benny/FluxMarionette
+58 verbose already installed skipping gulp-watch@^4.2.4 /Users/benny/FluxMarionette
+59 verbose already installed skipping http-proxy-middleware@0.0.5 /Users/benny/FluxMarionette
+60 verbose already installed skipping mocha-phantomjs@^3.5.3 /Users/benny/FluxMarionette
+61 verbose already installed skipping phantomjs@^1.9.16 /Users/benny/FluxMarionette
+62 silly install resolved []
+63 info build /Users/benny/FluxMarionette
+64 info linkStuff TillerBoilerplate@0.0.1
+65 silly linkStuff TillerBoilerplate@0.0.1 has /Users/benny as its parent node_modules
+66 verbose linkBins TillerBoilerplate@0.0.1
+67 verbose linkMans TillerBoilerplate@0.0.1
+68 verbose rebuildBundles TillerBoilerplate@0.0.1
+69 verbose rebuildBundles [ '.DS_Store',
+69 verbose rebuildBundles   '.bin',
+69 verbose rebuildBundles   'body-parser',
+69 verbose rebuildBundles   'browser-sync',
+69 verbose rebuildBundles   'express',
+69 verbose rebuildBundles   'gulp',
+69 verbose rebuildBundles   'gulp-autoprefixer',
+69 verbose rebuildBundles   'gulp-filter',
+69 verbose rebuildBundles   'gulp-mocha',
+69 verbose rebuildBundles   'gulp-mocha-phantomjs',
+69 verbose rebuildBundles   'gulp-notify',
+69 verbose rebuildBundles   'gulp-sass',
+69 verbose rebuildBundles   'gulp-sourcemaps',
+69 verbose rebuildBundles   'gulp-watch',
+69 verbose rebuildBundles   'http-proxy-middleware',
+69 verbose rebuildBundles   'mocha-phantomjs',
+69 verbose rebuildBundles   'phantomjs',
+69 verbose rebuildBundles   'requirejs' ]
+70 verbose rebuild bundle /Users/benny/FluxMarionette/node_modules/requirejs
+71 info build /Users/benny/FluxMarionette/node_modules/requirejs
+72 info preinstall requirejs@2.1.19
+73 info linkStuff requirejs@2.1.19
+74 silly linkStuff requirejs@2.1.19 has /Users/benny/FluxMarionette/node_modules as its parent node_modules
+75 verbose linkBins requirejs@2.1.19
+76 verbose link bins [ { 'r.js': './bin/r.js' },
+76 verbose link bins   '/Users/benny/FluxMarionette/node_modules/.bin',
+76 verbose link bins   false ]
+77 verbose linkMans requirejs@2.1.19
+78 verbose rebuildBundles requirejs@2.1.19
+79 silly gentlyRm /Users/benny/FluxMarionette/node_modules/.bin/r.js is being purged
+80 verbose gentlyRm don't care about contents; nuking /Users/benny/FluxMarionette/node_modules/.bin/r.js
+81 silly vacuum-fs purging /Users/benny/FluxMarionette/node_modules/.bin/r.js
+82 silly vacuum-fs quitting because other entries in /Users/benny/FluxMarionette/node_modules/.bin
+83 info install requirejs@2.1.19
+84 info postinstall requirejs@2.1.19
+85 info install TillerBoilerplate@0.0.1
+86 info postinstall TillerBoilerplate@0.0.1
+87 info prepublish TillerBoilerplate@0.0.1
+88 verbose validateInstall loading /Users/benny/FluxMarionette/package.json for validation
+89 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-notify/node_modules/gulp-util requires through2@'^2.0.0' but will load
+89 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-notify/node_modules/through2,
+89 warn unmet dependency which is version 0.6.5
+90 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-filter/node_modules/gulp-util requires through2@'^2.0.0' but will load
+90 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-filter/node_modules/through2,
+90 warn unmet dependency which is version 0.6.5
+91 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-autoprefixer/node_modules/gulp-util requires object-assign@'^3.0.0' but will load
+91 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-autoprefixer/node_modules/object-assign,
+91 warn unmet dependency which is version 2.1.1
+92 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-autoprefixer/node_modules/gulp-util requires through2@'^2.0.0' but will load
+92 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-autoprefixer/node_modules/through2,
+92 warn unmet dependency which is version 0.6.5
+93 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-mocha-phantomjs/node_modules/gulp-util/node_modules/dateformat/node_modules/meow requires minimist@'^1.1.0' but will load
+93 warn unmet dependency /Users/benny/FluxMarionette/node_modules/gulp-mocha-phantomjs/node_modules/gulp-util/node_modules/minimist,
+93 warn unmet dependency which is version 0.2.0
+94 verbose stack Error: The package phantomjs does not satisfy its siblings' peerDependencies requirements!
+94 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:125:32
+94 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:267:7
+94 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:138:5
+94 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
+94 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+94 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
+94 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+94 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
+94 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+94 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
+95 verbose cwd /Users/benny/FluxMarionette
+96 error Darwin 13.4.0
+97 error argv "node" "/usr/local/bin/npm" "install"
+98 error node v0.12.3
+99 error npm  v2.9.1
+100 error code EPEERINVALID
+101 error peerinvalid The package phantomjs does not satisfy its siblings' peerDependencies requirements!
+101 error peerinvalid Peer mocha-phantomjs@3.6.0 wants phantomjs@1.9.1 - 1.9.7-15
+102 verbose exit [ 1, true ]

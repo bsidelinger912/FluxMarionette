@@ -1,13 +1,13 @@
 var gulp            = require('gulp');
-var sass            = require('gulp-sass');
+//var sass            = require('gulp-sass');
 var watch           = require('gulp-watch');
-var autoprefixer    = require('gulp-autoprefixer');
-var notify          = require("gulp-notify");
-var sourcemaps      = require('gulp-sourcemaps');
+//var autoprefixer    = require('gulp-autoprefixer');
+//var notify          = require("gulp-notify");
+//var sourcemaps      = require('gulp-sourcemaps');
 // Server
 var browserSync     = require('browser-sync').create();
 var reload          = browserSync.reload;
-var filter          = require('gulp-filter');
+//var filter          = require('gulp-filter');
 var proxyMiddleware = require('http-proxy-middleware');
 
 gulp.task('default', ['serve']);
@@ -16,7 +16,7 @@ gulp.task('default', ['serve']);
 // Use BrowserSync to fire up a localhost server and start a livereload. We
 // inject CSS changes, and reload fully for javascript and html changes.
 // http://www.browsersync.io/docs/options/
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', [], function() {// ['sass'], function() {
 
     browserSync.init({
         server: "./",
@@ -31,10 +31,10 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch('**/*.js').on('change', browserSync.reload);
     gulp.watch("*.html").on('change', browserSync.reload);
     
-    gulp.watch("Javascript/**/*.scss", ['sass']);
-    gulp.watch("sass/**/*.scss", ['sass']);
+    //gulp.watch("Javascript/**/*.scss", ['sass']);
+    //gulp.watch("sass/**/*.scss", ['sass']);
 });
-
+/*
 gulp.task('sass', function () {
     gulp.src('./sass/screen.scss')
 
@@ -68,4 +68,4 @@ gulp.task('sass', function () {
         // don't want, since we're just injecting the CSS here)
         .pipe(filter('*.css'))
         .pipe(reload({stream: true}));
-});
+});*/
