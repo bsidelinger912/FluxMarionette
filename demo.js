@@ -22,24 +22,20 @@ define(function(require) {
 	});
 	var app = new App();
 
-
 	//our api controller class
-	var apiController = FluxMarionette.ApiController.extend({
-		name: {
-			url: "demoData/name.js", 
-			type: "GET",
-			apiMethod: "ajax",
-			eventName: "dispatch:name:in"
-		},
+	FluxMarionette.ApiController.name = {
+		url: "demoData/name.js",
+		type: "GET",
+		apiMethod: "ajax",
+		eventName: "dispatch:name:in"
+	};
 
-		addresses: {
-			url: "demoData/addresses.js",
-			type: "GET",
-			apiMethod: "ajax",
-			eventName: "dispatch:addresses:in"
-		}
-	});
-	app.apiController = new apiController();//this should be a singleton
+	FluxMarionette.ApiController.addresses = {
+		url: "demoData/addresses.js",
+		type: "GET",
+		apiMethod: "ajax",
+		eventName: "dispatch:addresses:in"
+	};
 
 	var Router = FluxMarionette.Router.extend({
 		routes: {
@@ -60,17 +56,18 @@ define(function(require) {
 
 	Backbone.history.start();
 
-	
+
 	////////////////////////////////////////////////// stores ///////////////////////////////////////
 	//the addresses collection
 	var addressCollection = FluxMarionette.CollectionStore.extend({
 		initialize: function(){
 			var self = this;
 
+			console.log(this);
 			//this will make the api calls that the others listen for
 			this.waitFor([
-				app.apiController.getEndpoint('addresses'),
-				app.apiController.getEndpoint('name')
+				this.getEndpoint('addresses'),
+				this.getEndpoint('name')
 			]).done(function(dataArray){
 				self.depsIn(dataArray);
 			});
@@ -107,7 +104,7 @@ define(function(require) {
 	});
 	app.nameStore = new nameModel;
 
-	
+
 	//the layout store
 	var layoutStore = FluxMarionette.ModelStore.extend({
 		//debug: true,
@@ -150,7 +147,7 @@ define(function(require) {
 	';
 	var NameView = FluxMarionette.ItemView.extend({
 		template: _.template(NameTemplate),
-		
+
 		initialize: function(){
 			this.model = app.nameStore;
 		},
