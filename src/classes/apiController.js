@@ -17,8 +17,8 @@ define(function (require) {
 				endpoint = this[endpointName];
 
 			if(!endpoint) throw new Error('The endpoint specified does not exist in this API Controller.');
-			
-			//two types of callbacks, a function, and an event 
+
+			//two types of callbacks, a function, and an event
 			if(typeof callback === "function"){
 				//just passing a function in
 				endpoint.method = callback;
@@ -27,10 +27,10 @@ define(function (require) {
 				endpoint.method = function(data){
 					self.dispatch(callback, data);
 				};
-			} 
+			}
 
 			if(payload) endpoint.payload = payload;
-			
+
 			return endpoint;
 		},
 
@@ -42,5 +42,5 @@ define(function (require) {
 
 	apiController.extend = Marionette.Object.extend;
 
-	return apiController;
+	return new apiController();
 });
