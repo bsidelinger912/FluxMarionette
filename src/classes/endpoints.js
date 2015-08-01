@@ -5,20 +5,22 @@ define(function (require) {
 	var dispatcher = require('mixins/dispatcher');
 	var api = require('mixins/api');
 
-	apiController = function(options) {
+	endpoints = function(options) {
+		this.attributes = {};
+		
 	    Marionette.Object.call(this, options);
 	};
 
-	_.extend(apiController.prototype, Marionette.Object.prototype, dispatcher, api, {
+	_.extend(endpoints.prototype, Marionette.Object.prototype, dispatcher, api, {
 		//gets the object that we send to the api methods
-		getEndpoint: function(endpointName, payload, callback){
+		get: function(endpointName, payload, callback){
 			//grab the config
 			var self = this,
-				endpoint = this[endpointName];
+				endpoint = this.attributes[endpointName];
 
 			if(!endpoint) throw new Error('The endpoint specified does not exist in this API Controller.');
-			
-			//two types of callbacks, a function, and an event 
+
+			//two types of callbacks, a function, and an event
 			if(typeof callback === "function"){
 				//just passing a function in
 				endpoint.method = callback;
@@ -27,20 +29,25 @@ define(function (require) {
 				endpoint.method = function(data){
 					self.dispatch(callback, data);
 				};
-			} 
+			}
 
 			if(payload) endpoint.payload = payload;
-			
+
 			return endpoint;
 		},
 
+		set: function(endpoints){
+			//we'll save it an in attribuest property just like backbone
+			_.extend(this.attributes, endpoints);
+		},
+
 		//calls the api methods with the endpoint logic
-		callEndpoint: function(endpointName, payload, callback){
-			return this.ajax(this.getEndpoint(endpointName, payload, callback));
+		call: function(endpointName, payload, callback){
+			return this.ajax(this.get(endpointName, payload, callback));
 		}
 	});
 
-	apiController.extend = Marionette.Object.extend;
+	endpoints.extend = Marionette.Object.extend;
 
-	return apiController;
+	return new endpoints();
 });

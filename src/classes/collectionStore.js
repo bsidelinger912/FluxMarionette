@@ -4,7 +4,7 @@ define(function (require) {
 		api = require('mixins/api'),
 		waitFor = require('mixins/waitFor'),
 		dispatcherEvents = require('mixins/dispatcherEvents'),
-		apiController = require('classes/apiController');
+		endpointMethods = require('mixins/endpointMethods');
 
 	//the class
 	var collectionStore = function(options) {
@@ -14,7 +14,7 @@ define(function (require) {
 	    Backbone.Collection.call(this, options);
 	};
 
-	_.extend(collectionStore.prototype, Backbone.Collection.prototype, dispatcher, api, waitFor, { getEndpoint: apiController.getEndpoint.bind(apiController) });
+	_.extend(collectionStore.prototype, Backbone.Collection.prototype, dispatcher, api, waitFor, endpointMethods);
 
 	collectionStore.extend = Backbone.Collection.extend;
 
