@@ -123,6 +123,9 @@ this.dispatcher.once('eventName', function(eventData){
 });
 ```
 
+##### Classes that use this property: 
+* All Classes
+
 ### dispatcherEvents
 This property is used like a Backbone view's events or a Marionette view's modelEvents property.  You can specify a method in your class or assign an anonymous function.  
 
@@ -138,6 +141,11 @@ someMethod: function(data){
 	//act on the event
 }
 ```
+
+##### Classes that use this property: 
+* FluxMarionette.ModelStore
+* FluxMarionette.CollectionStore
+* FluxMarionette.Router
 
 <br /><br />
 ## The Classes
