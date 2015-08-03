@@ -10,7 +10,7 @@ define(function (require) {
     //we do some logging, so create a safe console
     if (typeof console === "undefined") {
         console = {
-            log: function () { },
+            log: function () {},
             error: function () {}
         };
     }
@@ -19,6 +19,7 @@ define(function (require) {
     FluxMarionette.api = { cache: {}, queue: {}};
 
     //load up the classes ///////////////////////////////////////////////
+    FluxMarionette.Endpoints = require('classes/endpoints');
     FluxMarionette.ApiController = require('classes/apiController');
     FluxMarionette.Application = require('classes/application');
     FluxMarionette.CollectionStore = require('classes/collectionStore');

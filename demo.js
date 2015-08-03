@@ -22,8 +22,7 @@ define(function(require) {
 	});
 	var app = new App();
 
-
-	//our api controller class
+	//our api controller class//****** legacy
 	var apiController = FluxMarionette.ApiController.extend({
 		name: {
 			url: "demoData/name.js", 
@@ -40,6 +39,22 @@ define(function(require) {
 		}
 	});
 	app.apiController = new apiController();//this should be a singleton
+
+	//set some endpoints
+	FluxMarionette.Endpoints.set({
+		name: {
+			url: "demoData/name.js",
+			type: "GET",
+			apiMethod: "ajax",
+			eventName: "dispatch:name:in"
+		},
+		addresses: {
+			url: "demoData/addresses.js",
+			type: "GET",
+			apiMethod: "ajax",
+			eventName: "dispatch:addresses:in"
+		}
+	});
 
 	var Router = FluxMarionette.Router.extend({
 		routes: {
@@ -58,9 +73,6 @@ define(function(require) {
 	});
 	app.router = new Router;
 
-	Backbone.history.start();
-
-	
 	////////////////////////////////////////////////// stores ///////////////////////////////////////
 	//the addresses collection
 	var addressCollection = FluxMarionette.CollectionStore.extend({
@@ -69,8 +81,9 @@ define(function(require) {
 
 			//this will make the api calls that the others listen for
 			this.waitFor([
-				app.apiController.getEndpoint('addresses'),
-				app.apiController.getEndpoint('name')
+				this.getEndpoint('addresses'),
+				//this.getEndpoint('name') 
+				app.apiController.getEndpoint('name')//just to make sure it still works //*** legacy
 			]).done(function(dataArray){
 				self.depsIn(dataArray);
 			});
@@ -91,7 +104,7 @@ define(function(require) {
 
 		dispatcherEvents: {
 			'sync:newAddress': function(data){
-				console.log(data);
+				this.add(data);
 			}
 		}
 	});
@@ -107,7 +120,7 @@ define(function(require) {
 	});
 	app.nameStore = new nameModel;
 
-	
+
 	//the layout store
 	var layoutStore = FluxMarionette.ModelStore.extend({
 		//debug: true,
@@ -150,7 +163,7 @@ define(function(require) {
 	';
 	var NameView = FluxMarionette.ItemView.extend({
 		template: _.template(NameTemplate),
-		
+
 		initialize: function(){
 			this.model = app.nameStore;
 		},
@@ -230,7 +243,10 @@ define(function(require) {
 				<label>Zip</label> \
 				<input type="text" name="Zip" /> \
 			</div> \
-			<input type="submit" value="submit"> \
+			<div> \
+				<a href="#">cancel</a> &nbsp; \
+				<input type="submit" value="submit"> \
+			</div> \
 		</form> \
 	';
 	var AddressFormView = FluxMarionette.ItemView.extend({
@@ -249,7 +265,11 @@ define(function(require) {
 					return current;
 				}, {});
 
+				//dispatch the form data
 				this.dispatch('sync:newAddress', obj);
+
+				//back home
+				Backbone.history.navigate('', { trigger: true });
 			}
 		}
 	});
@@ -292,5 +312,8 @@ define(function(require) {
 		}
 	});
 	app.layoutView = new LayoutView({ model: app.layoutStore });
+
+	//start the router
+	Backbone.history.start();
 
 });

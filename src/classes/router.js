@@ -3,7 +3,8 @@ define(function (require) {
 	var dispatcher = require('mixins/dispatcher'),
 		api = require('mixins/api'),
 		waitFor = require('mixins/waitFor'),
-		dispatcherEvents = require('mixins/dispatcherEvents');
+		dispatcherEvents = require('mixins/dispatcherEvents'),
+		endpointMethods = require('mixins/endpointMethods');
 
 	
 	var router = function(options) {
@@ -14,7 +15,7 @@ define(function (require) {
 	};
 
 	//mixin api dispatcher and wait for
-	_.extend(router.prototype, Backbone.Router.prototype, dispatcher, api, waitFor);
+	_.extend(router.prototype, Backbone.Router.prototype, dispatcher, api, waitFor, endpointMethods);
 	router.extend = Backbone.Router.extend;
 
 	return router;

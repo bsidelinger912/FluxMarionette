@@ -3,7 +3,8 @@ define(function (require) {
 	var dispatcher = require('mixins/dispatcher'),
 		api = require('mixins/api'),
 		waitFor = require('mixins/waitFor'),
-		dispatcherEvents = require('mixins/dispatcherEvents');
+		dispatcherEvents = require('mixins/dispatcherEvents'),
+		endpointMethods = require('mixins/endpointMethods');
 
 	//the class
 	var collectionStore = function(options) {
@@ -13,7 +14,7 @@ define(function (require) {
 	    Backbone.Collection.call(this, options);
 	};
 
-	_.extend(collectionStore.prototype, Backbone.Collection.prototype, dispatcher, api, waitFor);
+	_.extend(collectionStore.prototype, Backbone.Collection.prototype, dispatcher, api, waitFor, endpointMethods);
 
 	collectionStore.extend = Backbone.Collection.extend;
 
