@@ -30,13 +30,13 @@ define(function(require) {
 			apiMethod: "ajax",
 			eventName: "dispatch:name:in"
 		},
-
 		addresses: {
 			url: "demoData/addresses.js",
 			type: "GET",
 			apiMethod: "ajax",
 			eventName: "dispatch:addresses:in"
 		}
+
 	});
 	app.apiController = new apiController();//this should be a singleton
 

@@ -10,7 +10,7 @@ define(function (require) {
             var promises = [];
 
             // Accept a single string, or single object as an action
-            if (typeof actions === 'string' || (typeof actions ==="object" && !$.isArray(actions)) {
+            if (typeof actions === 'string' || (typeof actions ==="object" && !$.isArray(actions))) {
                 actions = [actions];
             }
 
