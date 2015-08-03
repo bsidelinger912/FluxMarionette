@@ -44,7 +44,7 @@ define(function (require) {
                 FluxMarionette.api.queue[dataId] = true;
 
                 //this lets things know we've sent the request out
-                this.dispatch("api:" + dataId + ":requested");
+                this.dispatch("api:" + dataId + ":requested", options.payload);
 
                 //check the cache
                 var promise;
@@ -55,11 +55,12 @@ define(function (require) {
                      var defaults = {
                             contentType: 'application/json; charset=utf-8',
                             dataType: 'json',
-                            data: (options.payload) ? JSON.stringify(options.payload) : ""
+                            data: (options.payload) ? JSON.stringify(options.payload) : ((options.data) ? options.data : "")
                         }, 
                         ajaxOptions = $.extend(defaults, options);
                         delete ajaxOptions.method;
                         delete ajaxOptions.payload;
+                        delete ajaxOptions.useCache;
 
                      //now we've got the options so set the promise   
                      promise = $.ajax(ajaxOptions);
