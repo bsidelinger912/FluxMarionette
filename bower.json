@@ -18,11 +18,12 @@
     "index.html",
     "demo.js",
     "server.js",
-	".gitignore",
-	"gulpFile.js"
+    ".gitignore",
+    "gulpFile.js"
   ],
   "dependencies": {
     "marionette": "~2.4.2",
-    "backbone.radio": "~1.0.0"
+    "backbone.radio": "~1.0.0",
+    "backbone-validation": "~0.11.5"
   }
 }

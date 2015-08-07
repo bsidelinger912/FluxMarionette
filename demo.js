@@ -6,7 +6,8 @@ require.config({
     	"underscore": "../vendor/underscore/underscore-min",
     	"backbone": "../vendor/backbone/backbone",
         "backbone.radio": "../vendor/backbone.radio/build/backbone.radio",
-        "backbone.marionette": "../vendor/marionette/lib/backbone.marionette"
+        "backbone.marionette": "../vendor/marionette/lib/backbone.marionette",
+        "backbone.validation": "../vendor/backbone-validation/dist/backbone-validation-amd"
     }
 });
 
@@ -74,8 +75,275 @@ define(function(require) {
 	app.router = new Router;
 
 	////////////////////////////////////////////////// stores ///////////////////////////////////////
+	var addressModel = FluxMarionette.ModelStore.extend({
+		validation: {
+			LineOne: {
+				required: true//,
+				//label: "Address Line One"
+			},
+
+			LineTwo: {
+				required: false//,
+				//label: "Address Line Two"
+			},
+
+			City: {
+				required: true
+			},
+
+			State: {
+				required: true/*,
+				inputType: "select",
+				options: [
+				    {
+				        "text": "Alabama",
+				        "value": "AL"
+				    },
+				    {
+				        "text": "Alaska",
+				        "value": "AK"
+				    },
+				    {
+				        "text": "American Samoa",
+				        "value": "AS"
+				    },
+				    {
+				        "text": "Arizona",
+				        "value": "AZ"
+				    },
+				    {
+				        "text": "Arkansas",
+				        "value": "AR"
+				    },
+				    {
+				        "text": "California",
+				        "value": "CA"
+				    },
+				    {
+				        "text": "Colorado",
+				        "value": "CO"
+				    },
+				    {
+				        "text": "Connecticut",
+				        "value": "CT"
+				    },
+				    {
+				        "text": "Delaware",
+				        "value": "DE"
+				    },
+				    {
+				        "text": "District Of Columbia",
+				        "value": "DC"
+				    },
+				    {
+				        "text": "Federated States Of Micronesia",
+				        "value": "FM"
+				    },
+				    {
+				        "text": "Florida",
+				        "value": "FL"
+				    },
+				    {
+				        "text": "Georgia",
+				        "value": "GA"
+				    },
+				    {
+				        "text": "Guam",
+				        "value": "GU"
+				    },
+				    {
+				        "text": "Hawaii",
+				        "value": "HI"
+				    },
+				    {
+				        "text": "Idaho",
+				        "value": "ID"
+				    },
+				    {
+				        "text": "Illinois",
+				        "value": "IL"
+				    },
+				    {
+				        "text": "Indiana",
+				        "value": "IN"
+				    },
+				    {
+				        "text": "Iowa",
+				        "value": "IA"
+				    },
+				    {
+				        "text": "Kansas",
+				        "value": "KS"
+				    },
+				    {
+				        "text": "Kentucky",
+				        "value": "KY"
+				    },
+				    {
+				        "text": "Louisiana",
+				        "value": "LA"
+				    },
+				    {
+				        "text": "Maine",
+				        "value": "ME"
+				    },
+				    {
+				        "text": "Marshall Islands",
+				        "value": "MH"
+				    },
+				    {
+				        "text": "Maryland",
+				        "value": "MD"
+				    },
+				    {
+				        "text": "Massachusetts",
+				        "value": "MA"
+				    },
+				    {
+				        "text": "Michigan",
+				        "value": "MI"
+				    },
+				    {
+				        "text": "Minnesota",
+				        "value": "MN"
+				    },
+				    {
+				        "text": "Mississippi",
+				        "value": "MS"
+				    },
+				    {
+				        "text": "Missouri",
+				        "value": "MO"
+				    },
+				    {
+				        "text": "Montana",
+				        "value": "MT"
+				    },
+				    {
+				        "text": "Nebraska",
+				        "value": "NE"
+				    },
+				    {
+				        "text": "Nevada",
+				        "value": "NV"
+				    },
+				    {
+				        "text": "New Hampshire",
+				        "value": "NH"
+				    },
+				    {
+				        "text": "New Jersey",
+				        "value": "NJ"
+				    },
+				    {
+				        "text": "New Mexico",
+				        "value": "NM"
+				    },
+				    {
+				        "text": "New York",
+				        "value": "NY"
+				    },
+				    {
+				        "text": "North Carolina",
+				        "value": "NC"
+				    },
+				    {
+				        "text": "North Dakota",
+				        "value": "ND"
+				    },
+				    {
+				        "text": "Northern Mariana Islands",
+				        "value": "MP"
+				    },
+				    {
+				        "text": "Ohio",
+				        "value": "OH"
+				    },
+				    {
+				        "text": "Oklahoma",
+				        "value": "OK"
+				    },
+				    {
+				        "text": "Oregon",
+				        "value": "OR"
+				    },
+				    {
+				        "text": "Palau",
+				        "value": "PW"
+				    },
+				    {
+				        "text": "Pennsylvania",
+				        "value": "PA"
+				    },
+				    {
+				        "text": "Puerto Rico",
+				        "value": "PR"
+				    },
+				    {
+				        "text": "Rhode Island",
+				        "value": "RI"
+				    },
+				    {
+				        "text": "South Carolina",
+				        "value": "SC"
+				    },
+				    {
+				        "text": "South Dakota",
+				        "value": "SD"
+				    },
+				    {
+				        "text": "Tennessee",
+				        "value": "TN"
+				    },
+				    {
+				        "text": "Texas",
+				        "value": "TX"
+				    },
+				    {
+				        "text": "Utah",
+				        "value": "UT"
+				    },
+				    {
+				        "text": "Vermont",
+				        "value": "VT"
+				    },
+				    {
+				        "text": "Virgin Islands",
+				        "value": "VI"
+				    },
+				    {
+				        "text": "Virginia",
+				        "value": "VA"
+				    },
+				    {
+				        "text": "Washington",
+				        "value": "WA"
+				    },
+				    {
+				        "text": "West Virginia",
+				        "value": "WV"
+				    },
+				    {
+				        "text": "Wisconsin",
+				        "value": "WI"
+				    },
+				    {
+				        "text": "Wyoming",
+				        "value": "WY"
+				    }
+				]*/
+			},
+
+			Zip: {
+				required: true
+			}
+		}
+	});
+
 	//the addresses collection
 	var addressCollection = FluxMarionette.CollectionStore.extend({
+		model: addressModel,
+
 		initialize: function(){
 			var self = this;
 
@@ -219,59 +487,67 @@ define(function(require) {
 		}
 	});
 
+	// https://github.com/hongymagic/jQuery.serializeObject
+	$.fn.serializeObject = function () {
+	    "use strict";
+	    var a = {}, b = function (b, c) {
+	        var d = a[c.name];
+	        "undefined" != typeof d && d !== null ? $.isArray(d) ? d.push(c.value) : a[c.name] = [d, c.value] : a[c.name] = c.value
+	    };
+	    return $.each(this.serializeArray(), b), a
+	};
+
 	//address form
 	var AddressFormTemplate = '\
 		<h3>Add an address</h3> \
 		<form> \
-			<div> \
-				<label>Line One</label> \
-				<input type="text" name="LineOne" /> \
-			</div> \
-			<div> \
-				<label>Line Two</label> \
-				<input type="text" name="LineTwo" /> \
-			</div> \
-			<div> \
-				<label>City</label> \
-				<input type="text" name="City" /> \
-			</div> \
-			<div> \
-				<label>State</label> \
-				<input type="text" name="State" /> \
-			</div> \
-			<div> \
-				<label>Zip</label> \
-				<input type="text" name="Zip" /> \
-			</div> \
+			<%= showField("LineOne") %> \
+			<%= showField("LineTwo") %> \
+			<%= showField("City") %> \
+			<%= showField("State") %> \
+			<%= showField("Zip") %> \
 			<div> \
 				<a href="#">cancel</a> &nbsp; \
 				<input type="submit" value="submit"> \
 			</div> \
 		</form> \
 	';
-	var AddressFormView = FluxMarionette.ItemView.extend({
+	var AddressFormView = FluxMarionette.FormView.extend({
 		template: _.template(AddressFormTemplate),
 
-		events: {
-			'submit form': function(e){
-				e.preventDefault();
+		initialize: function(){
+			this.model = new addressModel();
+		},
 
-				//get form data
-				var data = $(e.currentTarget).serializeArray();
+		// events: {
+		// 	'click a': function(e){
+		// 		e.preventDefault();
+		// 		alert('click');
+		// 	}
+		// 	// 'submit form': function(e){
+		// 	// 	e.preventDefault();
 
-				//make it an object
-				var obj = data.reduce(function(current, item){
-					current[item.name] = item.value;
-					return current;
-				}, {});
+		// 	// 	//get form data
+		// 	// 	var data = $(e.currentTarget).serializeArray();
 
-				//dispatch the form data
-				this.dispatch('sync:newAddress', obj);
+		// 	// 	//make it an object
+		// 	// 	var obj = data.reduce(function(current, item){
+		// 	// 		current[item.name] = item.value;
+		// 	// 		return current;
+		// 	// 	}, {});
 
-				//back home
-				Backbone.history.navigate('', { trigger: true });
-			}
-		}
+		// 	// 	var errors = this.model.preValidate(obj);
+
+		// 	// 	console.log(errors);
+
+		// 	// 	/*
+		// 	// 	//dispatch the form data
+		// 	// 	this.dispatch('sync:newAddress', obj);
+
+		// 	// 	//back home
+		// 	// 	Backbone.history.navigate('', { trigger: true });*/
+		// 	// }
+		// }
 	});
 
 	//layout view
