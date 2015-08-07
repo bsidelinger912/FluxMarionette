@@ -84,7 +84,7 @@ define(function (require) {
 					this.dispatch('submit:' + (this.name || this.model.cid), obj);
 
 					//if we have an onSubmit handler, call it
-					this.onSubmit && this.onSubmit();
+					this.onSubmit && this.onSubmit(obj);
 				}
 			}
 		});
@@ -160,7 +160,6 @@ define(function (require) {
 	};
 
 	_.extend(formView.prototype, Views.ItemView.prototype);
-
 	formView.extend = Views.ItemView.extend;  
 
 	return formView;
