@@ -2,17 +2,18 @@
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['backbone.marionette', 'backbone.radio'], function(Marionette, Radio) {
-      return (root.FluxMarionette = factory(root, Marionette, Radio));
+    define(['backbone.marionette', 'backbone.radio', 'backbone.validation'], function(Marionette, Radio, Validation) {
+      return (root.FluxMarionette = factory(root, Marionette, Radio, Validation));
     });
   } else if (typeof exports !== 'undefined') {
     var Marionette = require('backbone.marionette');
     var Radio = require('backbone.radio');
-    module.exports = factory(root, Marionette, Radio);
+    var Validation = require('backbone.validation');
+    module.exports = factory(root, Marionette, Radio, Validation);
   } else {
-    root.FluxMarionette = factory(root, root.Marionette, root.Backbone.Radio);
+    root.FluxMarionette = factory(root, root.Marionette, root.Backbone.Radio, root.Backbone.Validation);
   }
 
-}(this, function(root, Marionette, Radio) {
+}(this, function(root, Marionette, Radio, Validation) {
 
 

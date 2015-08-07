@@ -4,7 +4,8 @@
         "jquery": "empty:",
         "underscore": "empty:",
         "backbone.marionette": "empty:",
-        "backbone.radio": "empty:"
+        "backbone.radio": "empty:",
+        "backbone.validation": "empty:"
     },
     "include": ["../tools/almond", "flux.marionette"],
     //"exclude": ["jquery", "underscore", "backbone.marionette", "backbone.radio"],

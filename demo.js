@@ -14,6 +14,12 @@ require.config({
 define(function(require) {
 	var FluxMarionette = require('flux.marionette');// '../flux.marionette.min');
 
+	//some settings
+	FluxMarionette.FormView.settings = {
+		textClass: "InputBox",
+		requiredClass: "requiredField"
+	};
+
 	////////////////////////////////////////////////// app classes ///////////////////////////////////////
 	//an app class
 	var App = FluxMarionette.Application.extend({
@@ -76,15 +82,15 @@ define(function(require) {
 
 	////////////////////////////////////////////////// stores ///////////////////////////////////////
 	var addressModel = FluxMarionette.ModelStore.extend({
-		validation: {
+		schema: {
 			LineOne: {
-				required: true//,
-				//label: "Address Line One"
+				required: true,
+				label: "Address Line One"
 			},
 
 			LineTwo: {
-				required: false//,
-				//label: "Address Line Two"
+				required: false,
+				label: "Address Line Two"
 			},
 
 			City: {
@@ -92,7 +98,7 @@ define(function(require) {
 			},
 
 			State: {
-				required: true/*,
+				required: true,
 				inputType: "select",
 				options: [
 				    {
@@ -331,7 +337,7 @@ define(function(require) {
 				        "text": "Wyoming",
 				        "value": "WY"
 				    }
-				]*/
+				]
 			},
 
 			Zip: {
@@ -371,7 +377,7 @@ define(function(require) {
 		},
 
 		dispatcherEvents: {
-			'sync:newAddress': function(data){
+			'submit:addressForm': function(data){
 				this.add(data);
 			}
 		}
@@ -514,40 +520,15 @@ define(function(require) {
 	';
 	var AddressFormView = FluxMarionette.FormView.extend({
 		template: _.template(AddressFormTemplate),
+		name: "addressForm",
 
 		initialize: function(){
 			this.model = new addressModel();
 		},
 
-		// events: {
-		// 	'click a': function(e){
-		// 		e.preventDefault();
-		// 		alert('click');
-		// 	}
-		// 	// 'submit form': function(e){
-		// 	// 	e.preventDefault();
-
-		// 	// 	//get form data
-		// 	// 	var data = $(e.currentTarget).serializeArray();
-
-		// 	// 	//make it an object
-		// 	// 	var obj = data.reduce(function(current, item){
-		// 	// 		current[item.name] = item.value;
-		// 	// 		return current;
-		// 	// 	}, {});
-
-		// 	// 	var errors = this.model.preValidate(obj);
-
-		// 	// 	console.log(errors);
-
-		// 	// 	/*
-		// 	// 	//dispatch the form data
-		// 	// 	this.dispatch('sync:newAddress', obj);
-
-		// 	// 	//back home
-		// 	// 	Backbone.history.navigate('', { trigger: true });*/
-		// 	// }
-		// }
+		onSubmit: function(){
+			Backbone.history.navigate('', { trigger: true });
+		}
 	});
 
 	//layout view
