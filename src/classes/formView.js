@@ -16,24 +16,36 @@ define(function (require) {
 		},
 		formGroupTemplate = _.template('\
 			<div class="<%= groupClass %>"> \
-				<label>\
+				<label for="<%= name %>">\
 					<%= label %>\
 					<% if(required){ %>\
 						<span class="<%= requiredClass %>"></span>\
 					<% } %>\
 				</label> \
 				<% if(type === "select"){ %>\
-					<select name="<%= name %>" class="<%= selectClass %>">\
+					<select name="<%= name %>" id="<%= name %>" class="<%= selectClass %>">\
 						<option value="" class="placeholder" style="display:none;"><%= selectEmptyText %></option>\
 						<% for(i in options){ %>\
 							<% var selected = (options[i].value == value) ? " selected" : ""; %>\
 							<option value="<%= options[i].value %>"<%= selected %>><%= options[i].text %></option>\
 						<% } %>\
 					</select>\
+				<% } else if(type === "radio"){ %>\
+					<% for(i in options){ %>\
+						<% var selected = (options[i].value == value) ? " selected" : ""; %>\
+						<input type="radio" name="<%= name %>" id="<%= options[i].value %>" value="<%= options[i].value %>"<%= selected %> />\
+						<label for="<%= options[i].value %>"><%= options[i].text %></label> \
+					<% } %>\
+				<% } else if(type === "checkbox"){ %>\
+					<% for(i in options){ %>\
+						<% var selected = (options[i].value == value) ? " selected" : ""; %>\
+						<input type="checkbox" name="<%= name %>" id="<%= options[i].value %>" value="<%= options[i].value %>"<%= selected %> />\
+						<label for="<%= options[i].value %>"><%= options[i].text %></label> \
+					<% } %>\
 				<% } else if(type === "textarea"){ %>\
-					<textarea name="<%= name %>" class="<%= textAreaClass %>"><%= value %></textarea>\
+					<textarea name="<%= name %>" id="<%= name %>" class="<%= textAreaClass %>"><%= value %></textarea>\
 				<% } else { %>\
-					<input type="<%= type %>" name="<%= name %>" class="<%= textClass %>" value="<%= value %>" /> \
+					<input type="<%= type %>" name="<%= name %>" id="<%= name %>" class="<%= textClass %>" value="<%= value %>" /> \
 				<% } %>\
 			</div> \
 		');
@@ -112,8 +124,8 @@ define(function (require) {
 
 				if(thisField){
 					//make sure they give options if it's a select
-					if(thisField.inputType === "select" && !thisField.options){
-						console.error(fieldName + ': must have "options" to define options for a select.');
+					if((thisField.inputType === "select" || thisField.inputType === "radio" || thisField.inputType === "checkbox") && !thisField.options){
+						console.error(fieldName + ': must have "options" to define options for a select, radio group or checkbox group.');
 						return "";
 					}
 
