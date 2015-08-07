@@ -43,6 +43,18 @@ define(function (require) {
 		//we'll need this reference inside some things
 		var self = this;
 
+		//save a  passed  onBeforeDestroy function, and extend it to remove bindings
+		var oldBeforeDestroy = (typeof this.onBeforeDestroy === "function") ? this.onBeforeDestroy : function(){};
+		this.onBeforeDestroy = function(){
+			//we need to unbind this
+			Backbone.Validation.unbind(self);
+
+			//unbind the keyup and change events too
+			this.$el.off('change.formView keyup.formView');
+
+			oldBeforeDestroy();
+		};
+
 		//add the submit handler
 		this.events = $.extend((this.events || {}), {
 			'submit form': function(e){
@@ -65,9 +77,7 @@ define(function (require) {
 					var self = this;
 					$.each(errors, function(name, value){
 						//show and clear error
-						self.$('[name=' + name + ']').keyup(function(e){
-							$(this).siblings('div.' + FluxMarionette.FormView.settings.invalidClass).remove();
-						}).after('<div class="' + FluxMarionette.FormView.settings.invalidClass + '">' + value + '</div>');
+						self.$('[name=' + name + ']').after('<div class="' + FluxMarionette.FormView.settings.invalidClass + '">' + value + '</div>');
 					});
 				} else {
 					//send event
@@ -140,6 +150,10 @@ define(function (require) {
 			//extend settings from defaults
 			FluxMarionette.FormView.settings = $.extend(defaultSettings,(FluxMarionette.FormView.settings || {}));
 
+			//need to bind the clearing events specifically so they don't override anything in the implementation
+			self.$el.on('change.formView keyup.formView', 'input, textarea, select', function(e){
+				$(e.currentTarget).siblings('div.invalid').remove();
+			});
 		}, 0);
 		
 	    Views.ItemView.call(this, options);

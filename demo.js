@@ -11,6 +11,8 @@ require.config({
     }
 });
 
+var app;
+
 define(function(require) {
 	var FluxMarionette = require('flux.marionette');// '../flux.marionette.min');
 
@@ -27,7 +29,7 @@ define(function(require) {
 			//
 		}
 	});
-	var app = new App();
+	app = new App();
 
 	//our api controller class//****** legacy
 	var apiController = FluxMarionette.ApiController.extend({
@@ -528,7 +530,11 @@ define(function(require) {
 
 		onSubmit: function(){
 			Backbone.history.navigate('', { trigger: true });
-		}
+		}//,
+
+		// onBeforeDestroy: function(){
+		// 	console.log('destroyed the form view');
+		// }
 	});
 
 	//layout view
