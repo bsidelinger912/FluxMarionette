@@ -15,7 +15,7 @@ define(function (require) {
 			selectEmptyText: "Choose..."
 		},
 		formGroupTemplate = _.template('\
-			<div class="<%= groupClass %>"> \
+			<div class="<%= groupClass %><%= thisGroupClass %>"> \
 				<label for="<%= name %>">\
 					<%= label %>\
 					<% if(required){ %>\
@@ -136,7 +136,8 @@ define(function (require) {
 						options: thisField.options || [],
 						required: thisField.required || false,
 						value: self.model.get(fieldName) || "",
-						inputClass: " " + thisField.inputClass || ""  
+						inputClass: (thisField.inputClass) ? " " + thisField.inputClass : "",
+						thisGroupClass: (thisField.groupClass) ? " " + thisField.groupClass : ""  
 					}));
 				} 
 
@@ -151,7 +152,7 @@ define(function (require) {
 			if(self.model && self.model.schema){
 				//pass just the validation parts of the schema to the validation
 				self.model.validation = _.mapObject(self.model.schema, function(val, key){
-					return _.omit(val, 'label', 'options', 'inputType', 'inputClass');
+					return _.omit(val, 'label', 'options', 'inputType', 'inputClass', 'groupClass');
 				});
 
 				//bind validation now, if there's no model, it'll throw an error
