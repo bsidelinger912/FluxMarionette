@@ -136,7 +136,7 @@ define(function (require) {
 						options: thisField.options || [],
 						required: thisField.required || false,
 						value: self.model.get(fieldName) || "",
-						inputClass: thisField.inputClass || ""  
+						inputClass: " " + thisField.inputClass || ""  
 					}));
 				} 
 
