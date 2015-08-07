@@ -4,7 +4,7 @@ define(function (require) {
 	require('backbone.validation');
 
 	//some vars
-	var modelValidationError = "You need to specify a model with validation!",
+	var modelValidationError = "You need to specify a model with a schema!",
 		defaultSettings = {
 			groupClass: "form-group",
 			textClass: "",
