@@ -31,7 +31,7 @@ define(function (require) {
 						<% } %>\
 					</select>\
 				<% } else if(type === "textarea"){ %>\
-					<textarea name="<%= name %>" class="<%= textAreaClass %>" value="<%= value %>"></textarea>\
+					<textarea name="<%= name %>" class="<%= textAreaClass %>"><%= value %></textarea>\
 				<% } else { %>\
 					<input type="<%= type %>" name="<%= name %>" class="<%= textClass %>" value="<%= value %>" /> \
 				<% } %>\
