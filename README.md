@@ -1,5 +1,5 @@
 # FluxMarionette
-A flux based framework that extends Backbone and Marionette. 
+A flux based framework built on Backbone and Marionette. The primary purpose of this framework is to add an api to Marionette that will enable a flux architecture.  This is done in the form of a handful of methods and properties added to Marionette and Backbone classes.  The index.html file loads demo.js and provides examples of usage.
 
 ## Installation
 
