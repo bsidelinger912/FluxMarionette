@@ -23,7 +23,7 @@ define(function (require) {
 					<% } %>\
 				</label> \
 				<% if(type === "select"){ %>\
-					<select name="<%= name %>" id="<%= name %>" class="<%= selectClass %>">\
+					<select name="<%= name %>" id="<%= name %>" class="<%= selectClass %><%= inputClass %>">\
 						<option value="" class="placeholder" style="display:none;"><%= selectEmptyText %></option>\
 						<% for(i in options){ %>\
 							<% var selected = (options[i].value == value) ? " selected" : ""; %>\
@@ -43,9 +43,9 @@ define(function (require) {
 						<label for="<%= options[i].value %>"><%= options[i].text %></label> \
 					<% } %>\
 				<% } else if(type === "textarea"){ %>\
-					<textarea name="<%= name %>" id="<%= name %>" class="<%= textAreaClass %>"><%= value %></textarea>\
+					<textarea name="<%= name %>" id="<%= name %>" class="<%= textAreaClass %><%= inputClass %>"><%= value %></textarea>\
 				<% } else { %>\
-					<input type="<%= type %>" name="<%= name %>" id="<%= name %>" class="<%= textClass %>" value="<%= value %>" /> \
+					<input type="<%= type %>" name="<%= name %>" id="<%= name %>" class="<%= textClass %><%= inputClass %>" value="<%= value %>" /> \
 				<% } %>\
 			</div> \
 		');
@@ -135,7 +135,8 @@ define(function (require) {
 						type: thisField.inputType || "text",
 						options: thisField.options || [],
 						required: thisField.required || false,
-						value: self.model.get(fieldName) || ""  
+						value: self.model.get(fieldName) || "",
+						inputClass: thisField.inputClass || ""  
 					}));
 				} 
 
@@ -150,7 +151,7 @@ define(function (require) {
 			if(self.model && self.model.schema){
 				//pass just the validation parts of the schema to the validation
 				self.model.validation = _.mapObject(self.model.schema, function(val, key){
-					return _.omit(val, 'label', 'options', 'inputType');
+					return _.omit(val, 'label', 'options', 'inputType', 'inputClass');
 				});
 
 				//bind validation now, if there's no model, it'll throw an error
