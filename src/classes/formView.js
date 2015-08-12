@@ -26,7 +26,7 @@ define(function (require) {
 					<select name="<%= name %>" id="<%= name %>" class="<%= selectClass %><%= inputClass %>">\
 						<option value="" class="placeholder" style="display:none;"><%= selectEmptyText %></option>\
 						<% for(i in options){ %>\
-							<% var selected = (options[i].value == value) ? " selected" : ""; %>\
+							<% var selected = (options[i].value == value || options[i].text == value) ? " selected" : ""; %>\
 							<option value="<%= options[i].value %>"<%= selected %>><%= options[i].text %></option>\
 						<% } %>\
 					</select>\
