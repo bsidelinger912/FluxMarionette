@@ -151,8 +151,9 @@ define(function (require) {
 			//make sure the model has a schema
 			if(self.model && self.model.schema){
 				//pass just the validation parts of the schema to the validation
-				self.model.validation = _.mapObject(self.model.schema, function(val, key){
-					return _.omit(val, 'label', 'options', 'inputType', 'inputClass', 'groupClass');
+				self.model.validation = {};
+				$.each(self.model.schema, function(name, value){
+					self.model.validation[name] = _.omit(value, 'label', 'options', 'inputType', 'inputClass', 'groupClass');
 				});
 
 				//bind validation now, if there's no model, it'll throw an error
