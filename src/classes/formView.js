@@ -88,9 +88,6 @@ define(function (require) {
 				if(errors){
 					var self = this;
 					$.each(errors, function(property, message){
-						//if the property is referenced in the message and we have a label, we'll want to use the label instead of the property
-						if(self.model.schema[property].label) message = message.replace(property, self.model.schema[property].label);
-
 						//show error
 						self.$('[name=' + property + ']').after('<div class="' + FluxMarionette.FormView.settings.invalidClass + '">' + message + '</div>');
 					});

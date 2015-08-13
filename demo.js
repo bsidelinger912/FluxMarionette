@@ -85,7 +85,7 @@ define(function(require) {
 	////////////////////////////////////////////////// stores ///////////////////////////////////////
 	var addressModel = FluxMarionette.ModelStore.extend({
 		schema: {
-			LineOne: {
+			LineOneTest: {
 				required: true,
 				label: "Address Line One"
 			},
@@ -509,7 +509,7 @@ define(function(require) {
 	var AddressFormTemplate = '\
 		<h3>Add an address</h3> \
 		<form> \
-			<%= showField("LineOne") %> \
+			<%= showField("LineOneTest") %> \
 			<%= showField("LineTwo") %> \
 			<%= showField("City") %> \
 			<%= showField("State") %> \
