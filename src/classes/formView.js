@@ -77,7 +77,7 @@ define(function (require) {
 				var data = $(e.currentTarget).serializeArray();
 
 				//make it an object 
-				var obj = data.reduce(function(current, item){
+				var obj = _.reduce(data, function(current, item){
 					current[item.name] = item.value;
 					return current;
 				}, {});

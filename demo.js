@@ -369,7 +369,7 @@ define(function(require) {
 
 		depsIn: function(dataArray){
 			//map the data
-			var addresses = dataArray[0].map(function(address){
+			var addresses = _.map(dataArray[0], function(address){
 				return $.extend(address, { name: dataArray[1]});
 			});
 
