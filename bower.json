@@ -19,7 +19,8 @@
     "demo.js",
     "server.js",
     ".gitignore",
-    "gulpFile.js"
+    "gulpFile.js",
+    "npm-debug.log"
   ],
   "dependencies": {
     "marionette": "~2.4.2",
