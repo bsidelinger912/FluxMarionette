@@ -1,8 +1,10 @@
+console.log(oldIE);
+
 require.config({
     urlArgs: "v=" + (new Date()).getTime(),
     baseUrl: "src",
     paths: {
-    	"jquery": "../vendor/jquery/dist/jquery.min",
+    	"jquery": (oldIE) ? "../vendor/jquery-legacy/jquery.min" : "../vendor/jquery/dist/jquery.min",
     	"underscore": "../vendor/underscore/underscore-min",
     	"backbone": "../vendor/backbone/backbone",
         "backbone.radio": "../vendor/backbone.radio/build/backbone.radio",

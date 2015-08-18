@@ -71,6 +71,7 @@ define(function (require) {
 		this.events = $.extend((this.events || {}), {
 			'submit form': function(e){
 				e.preventDefault();
+				e.stopPropagation();
 
 				//get form data
 				var data = $(e.currentTarget).serializeArray();
