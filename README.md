@@ -23,8 +23,6 @@ The framework depends on RequireJS, so make sure this is installed and included 
 
 Your RequireJS config will need paths to the framework, as well as backbone, backbone.radio, backbone.marionette, and backbone.validation.
 
-
-
 ```javascript
 // javascript/app.js
 require.config({
@@ -38,6 +36,8 @@ require.config({
     }
 });
 ```
+
+Refer to _demo.js_ for further direction on how to initialize the app.
 
 <br /><br />
 ##The Methods
