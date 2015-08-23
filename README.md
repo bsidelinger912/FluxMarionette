@@ -1,6 +1,6 @@
 # FluxMarionette
 
-####A flux based framework that extends [Backbone](http://backbonejs.org/) and [Marionette](http://marionettejs.com/). 
+####A flux based framework that extends [Backbone](http://backbonejs.org/) and [Marionette](http://marionettejs.com/).
 The intent of this project is to create a pattern for the [Flux](https://facebook.github.io/flux/) event cycle within a Backbone/Marionette application.  Each is built on a Backbone or Marionette class and retains all native functionality.  The framework exposes a handful of new methods and properties that can be used to create a [Flux](https://facebook.github.io/flux/) architecture.  You'll need to have a strong grasp on Flux before you'll be able to effictively use this framework.  We don't necessary enforce any adherence to Flux, and you can use as much of it as you want/need without having to give anything up that you'd get with a normal Backbone/Marionette application. The framework depends on Marionette (jQuery, Underscore, Backbone), [Backbone.Radio](https://github.com/marionettejs/backbone.radio), and [Backbone.validation](https://github.com/thedersen/backbone.validation).  It also uses Array.reduce() which doesn't work in IE < 9.  Here's a polyfill for old browsers: [link](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce#Polyfill)
 
 <br /><br />
@@ -12,6 +12,32 @@ Install via [Bower](http://bower.io/)
 bower install flux.marionette
 ```
 
+The framework depends on RequireJS, so make sure this is installed and included in your main page.
+
+
+```javascript
+// index.html
+<script src="bower_components/requirejs/require.js"></script>
+<script src="javascript/app.js" ></script>
+```
+
+Your RequireJS config will need paths to the framework, as well as backbone, backbone.radio, backbone.marionette, and backbone.validation.
+
+```javascript
+// javascript/app.js
+require.config({
+	// Replace bower_components to match your bower directory
+    paths: {
+        flux: 'bower_components/flux.marionette/flux.marionette.min',
+        backbone: 'bower_components/backbone/backbone',
+        "backbone.radio": "bower_components/backbone.radio/build/backbone.radio",
+        "backbone.marionette": "bower_components/marionette/lib/backbone.marionette",
+        "backbone.validation": "bower_components/backbone-validation/dist/backbone-validation-amd"
+    }
+});
+```
+
+Refer to _demo.js_ for further direction on how to initialize the app.
 
 <br /><br />
 ##The Methods
@@ -24,7 +50,7 @@ The dispatch method is available in all of our classes.  It is used to send an e
 this.dispatch('eventName'[, eventPayload ]);
 ```
 
-##### Classes that expose this method: 
+##### Classes that expose this method:
 * All classes
 
 ###.ajax()
@@ -46,9 +72,9 @@ var dataId = this.ajax({
 	//for a global event
 	eventName: 'an:event:here'
 });
-``` 
+```
 
-##### Classes that expose this method: 
+##### Classes that expose this method:
 * FluxMarionette.ModelStore
 * FluxMarionette.CollectionStore
 * FluxMarionette.Router
@@ -59,7 +85,7 @@ This is what is used by the .ajax method to create a data ID.  The method is exp
 ##### Classes that expose this method: FluxMarionette.ModelStore, FluxMarionette.CollectionStore, FluxMarionette.Router
 
 ###.waitFor()
-This is used to handle a multiple dependancy stack.  You must pass an array of objects that define .ajax calls, or strings that represent events that must be raised.  .waitFor returns a promise and will pass an array of responses to each dependancy passed to .waitFor.  
+This is used to handle a multiple dependancy stack.  You must pass an array of objects that define .ajax calls, or strings that represent events that must be raised.  .waitFor returns a promise and will pass an array of responses to each dependancy passed to .waitFor.
 
 ```javascript
 this.waitFor([
@@ -68,44 +94,44 @@ this.waitFor([
 
 	//the params for an ajax call
 	{
-		url: "demoData/name.js", 
+		url: "demoData/name.js",
 		type: "GET",
 		eventName: "dispatch:name:in"
 	},
 
 	//.ajax params derived from an endpoint, we'll explain this a little later...
-	this.getEndpoint('address') 
+	this.getEndpoint('address')
 
 ]).done(function(dataArray){
 	//do something now...
 });
 ```
 
-##### Classes that expose this method: 
+##### Classes that expose this method:
 * FluxMarionette.ModelStore
 * FluxMarionette.CollectionStore
 * FluxMarionette.Router
 
 ###.getEndpoint()
-This method will return an endpoint defined in the FluxMarionette.Endpoints class, it can be used to retrieve the params needed for both .ajax and .waitFor.  See the class below for explanation of how to define endpoints.  
+This method will return an endpoint defined in the FluxMarionette.Endpoints class, it can be used to retrieve the params needed for both .ajax and .waitFor.  See the class below for explanation of how to define endpoints.
 
-##### Classes that expose this method: 
+##### Classes that expose this method:
 * FluxMarionette.ModelStore
 * FluxMarionette.CollectionStore
 * FluxMarionette.Router
 
 ###.setEndpoint()
-This method will set one or more endpoints for use by any class.  See the class below for explanation of how to define endpoints.  
+This method will set one or more endpoints for use by any class.  See the class below for explanation of how to define endpoints.
 
-##### Classes that expose this method: 
+##### Classes that expose this method:
 * FluxMarionette.ModelStore
 * FluxMarionette.CollectionStore
 * FluxMarionette.Router
 
 ###.callEndpoint()
-This method will set one or more endpoints for use by any class.  See the class below for explanation of how to define endpoints. 
+This method will set one or more endpoints for use by any class.  See the class below for explanation of how to define endpoints.
 
-##### Classes that expose this method: 
+##### Classes that expose this method:
 * FluxMarionette.ModelStore
 * FluxMarionette.CollectionStore
 * FluxMarionette.Router
@@ -124,11 +150,11 @@ this.dispatcher.once('eventName', function(eventData){
 });
 ```
 
-##### Classes that use this property: 
+##### Classes that use this property:
 * All Classes
 
 ### dispatcherEvents
-This property is used like a Backbone view's events or a Marionette view's modelEvents property.  You can specify a method in your class or assign an anonymous function.  
+This property is used like a Backbone view's events or a Marionette view's modelEvents property.  You can specify a method in your class or assign an anonymous function.
 
 ```javascript
 dispatcherEvents: {
@@ -143,7 +169,7 @@ someMethod: function(data){
 }
 ```
 
-##### Classes that use this property: 
+##### Classes that use this property:
 * FluxMarionette.ModelStore
 * FluxMarionette.CollectionStore
 * FluxMarionette.Router
@@ -155,8 +181,8 @@ Below is a list of classes provided in the framework.  All these classes are use
 ### FluxMarionette.Application
 **Marionette counterpart**: Marionette.Application
 
-####Methods: 
-* .dispatch() 
+####Methods:
+* .dispatch()
 * .ajax()
 * .waitFor()
 * .getEndpoint()
@@ -170,7 +196,7 @@ This is a way to save information about api endpoints in a central location. Thi
 //to set some endpoints
 FluxMarionette.Endpoints.set({
 	name: {
-		url: "demoData/name.js", 
+		url: "demoData/name.js",
 		type: "GET",
 		eventName: "dispatch:name:recieved"
 	},
@@ -202,7 +228,7 @@ this.getEndpoint(endpointName[, payload][, callback]);
 this.setEndpoint(endpointParams);
 ```
 
-####Methods: 
+####Methods:
 * .get()
 * .set()
 * .call()
@@ -214,7 +240,7 @@ this.setEndpoint(endpointParams);
 This class is a fluxified Backbone collection.  It has the dispatcherEvents listener object as does FluxMarionette.ModelStore and FluxMarionette.Router.  These listeners are set like this and work similar to Marionette's modelEvents:
 
 ####Methods:
-* .dispatch() 
+* .dispatch()
 * .ajax()
 * .waitFor()
 * .getEndpoint()
@@ -228,7 +254,7 @@ This class is a fluxified Backbone collection.  It has the dispatcherEvents list
 This has all the same capabilities as FluxMarionette.CollectionStore but is built on Backbone.Model.
 
 ####Methods:
-* .dispatch() 
+* .dispatch()
 * .ajax()
 * .waitFor()
 * .getEndpoint()
@@ -241,7 +267,7 @@ This has all the same capabilities as FluxMarionette.CollectionStore but is buil
 This has all the same capabilities as FluxMarionette.CollectionStore and FluxMarionette.ModelStore but is built on Backbone.Router
 
 ####Methods:
-* .dispatch() 
+* .dispatch()
 * .ajax()
 * .waitFor()
 * .getEndpoint()
@@ -255,25 +281,25 @@ This has all the same capabilities as FluxMarionette.CollectionStore and FluxMar
 The view classes should use .dispatch() to send event data such as a form submission or navigation for use by any stores or routers that may be interested.
 
 ####Methods:
-* .dispatch() 
+* .dispatch()
 
 ###FluxMarionette.CompositeView
 **Marionette counterpart**: Marionette.CompositeView
 The view classes should use .dispatch() to send event data such as a form submission or navigation for use by any stores or routers that may be interested.
 
 ####Methods:
-* .dispatch() 
+* .dispatch()
 
 ###FluxMarionette.CollectionView
 **Marionette counterpart**: Marionette.CollectionView
 The view classes should use .dispatch() to send event data such as a form submission or navigation for use by any stores or routers that may be interested.
 
 ####Methods:
-* .dispatch() 
+* .dispatch()
 
 ###FluxMarionette.ItemView
 **Marionette counterpart**: Marionette.ItemView
 The view classes should use .dispatch() to send event data such as a form submission or navigation for use by any stores or routers that may be interested.
 
 ####Methods:
-* .dispatch() 
+* .dispatch()
